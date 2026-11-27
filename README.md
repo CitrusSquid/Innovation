@@ -7,38 +7,21 @@ A fan-made digital adaptation of *Innovation* (4th Edition) by Carl Chudyk.
 ## Features
 
 - **Game Modes**: **1v1**, **3p FFA (`1v1v1`)**, and **2v2 (Team)** variants across Ages 1–11.
-- **Fair, Non-Cheating AI**: Both rule-based Heuristic and `TD(λ)` neural network AI tiers (`Easy`, `Medium`, `Hard`, `Full`) that operate strictly on sanitized `PlayerView` projections without reading hidden opponent hands, score piles, or deck order.
+- **Fair, Non-Cheating AI**: Both rule-based Heuristic and `TD(λ)` neural network AI tiers do not have access to hidden information.
+- The Full TD AI is the best AI model. Easy, medium, and hard all reduce its capacity to some extent by handicapping, forcing errors, etc. Heuristic functions roughly at the level of a medium TD AI.  
 - **Local Pass-and-Play & AI vs AI**: Privacy curtain handoff for multi-human play and auto/manual spectator modes for AI-only matches.
-- **Offline Single-File HTML & Saves**: Export a self-contained offline `.html` build, save/load local slots in `localStorage`, or export/import `.json` match states.
+- **Offline** Functions entirely offline as an all in one .html file. AI weights are bundled. Saves in `localStorage`.
 
 ## Quick Start
 
-**Prerequisites:** Node.js (v20+)
-
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-2. Run the development server:
-   ```bash
-   npm run dev
-   ```
-3. Run type-checking and unit tests:
-   ```bash
-   npm run lint
-   npm test
-   ```
-4. Build the production single-file bundle (`dist/index.html`):
-   ```bash
-   npm run build
-   ```
+1. Download and run index.html in Dist folder.
+- That is all
 
 ## AI Training & Benchmarking
 
-The standalone TD Training & Weights Studio (`trainer.html`) is separate from the game UI and runs in dev mode:
-
-```bash
-npm run train:gui
-```
+- New AI weights may be trained. See TD_TRAINING_GUIDE.md for more information.
+- Training is via the CLI or trainer.html file.
+- There is an inbuilt AI Arena, you can click on the games to visualise their final state.
+- Training a new AI model takes roughly an hour for 25k games on modern hardware.
 
 CLI scripts (`npm run train:td`, `npm run bench:ai`, `npm run compare:ai`) and model weight details are documented in [TD_TRAINING_GUIDE.md](./TD_TRAINING_GUIDE.md).
