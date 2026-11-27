@@ -13,9 +13,7 @@ A fan-made digital adaptation of *Innovation* (4th Edition) by Carl Chudyk.
 - **Offline** Functions entirely offline as an all in one .html file. AI weights are bundled. Saves in `localStorage`.
 
 ## Quick Start
-
-1. Download and run index.html in Dist folder.
-- That is all
+- Download and run index.html in Dist folder.
 
 ## AI Training & Benchmarking
 
