@@ -11,6 +11,7 @@ A fan-made digital adaptation of *Innovation* (4th Edition) by Carl Chudyk.
 - The Full TD AI is the best AI model. Easy, medium, and hard all reduce its capacity to some extent by handicapping, forcing errors, etc. Heuristic functions roughly at the level of a medium TD AI.  
 - **Local Pass-and-Play & AI vs AI**: Privacy curtain handoff for multi-human play and auto/manual spectator modes for AI-only matches.
 - **Offline** Functions entirely offline as an all in one .html file. AI weights are bundled. Saves in `localStorage`.
+- **Mobile and desktop**. Has 2 separate layouts, one for mobile (vertical) and one for widescreen desktop / tablet layouts.
 
 ## Quick Start
 - Download and run index.html in Dist folder.
