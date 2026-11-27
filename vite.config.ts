@@ -81,7 +81,7 @@ function offlineHtmlExportPlugin(): Plugin {
 export default defineConfig(({ command }) => {
   return {
     base: './',
-    publicDir: false as const,
+    publicDir: 'public',
     plugins: [
       react(),
       tailwindcss(),

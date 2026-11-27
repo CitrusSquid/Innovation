@@ -1,5 +1,6 @@
 import { SPECIAL_ACHIEVEMENTS } from './constants';
 import type {
+  ActionLogEntry,
   PendingPrompt,
   PublicPlayerView,
   SpecialAchievementDef,
@@ -74,4 +75,70 @@ export function getZeroSelectionSkipLabels(
     idleLabel: 'Skip',
     confirmLabel: 'Confirm Skip',
   };
+}
+
+export interface GroupedLogItem {
+  entry: ActionLogEntry;
+  subEntries: ActionLogEntry[];
+}
+
+export interface PlayerLogGroup {
+  actorId: string;
+  actorName: string;
+  entries: GroupedLogItem[];
+}
+
+export interface TurnLogGroup {
+  turn: number;
+  players: PlayerLogGroup[];
+}
+
+export function groupLogEntries(
+  log: ReadonlyArray<ActionLogEntry>,
+  newestFirst = true
+): TurnLogGroup[] {
+  const byParent = new Map<string, ActionLogEntry[]>();
+  const topLevelEntries: ActionLogEntry[] = [];
+
+  for (const entry of log) {
+    if (entry.parentLogId) {
+      const children = byParent.get(entry.parentLogId) ?? [];
+      children.push(entry);
+      byParent.set(entry.parentLogId, children);
+    } else {
+      topLevelEntries.push(entry);
+    }
+  }
+
+  const byTurn = new Map<number, ActionLogEntry[]>();
+  for (const entry of topLevelEntries) {
+    const list = byTurn.get(entry.turn) ?? [];
+    list.push(entry);
+    byTurn.set(entry.turn, list);
+  }
+
+  const turns = Array.from(byTurn.keys()).sort((a, b) => (newestFirst ? b - a : a - b));
+  return turns.map((turn) => {
+    const turnEntries = byTurn.get(turn) ?? [];
+    const orderedEntries = newestFirst ? [...turnEntries].reverse() : turnEntries;
+    const playerGroups: PlayerLogGroup[] = [];
+    for (const entry of orderedEntries) {
+      const rawSubs = byParent.get(entry.id) ?? [];
+      const groupedItem: GroupedLogItem = {
+        entry,
+        subEntries: newestFirst ? [...rawSubs].reverse() : [...rawSubs],
+      };
+      const last = playerGroups[playerGroups.length - 1];
+      if (last && last.actorId === entry.actorId) {
+        last.entries.push(groupedItem);
+      } else {
+        playerGroups.push({
+          actorId: entry.actorId,
+          actorName: entry.actorName,
+          entries: [groupedItem],
+        });
+      }
+    }
+    return { turn, players: playerGroups };
+  });
 }

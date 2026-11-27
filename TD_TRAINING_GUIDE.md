@@ -1,4 +1,4 @@
-# TD(λ) Neural Network Training & Benchmarking Guide (v1.7)
+# TD(λ) Neural Network Training & Benchmarking Guide (v1.8)
 
 This project includes a custom TypeScript Temporal-Difference (`TD(λ)`) neural evaluator (`1,229 -> 192 -> 80 -> 2/3` funnel MLP, `featureVersion: 3`) trained with mini-batch Adam (`batchSize = 32`), Heuristic value distillation during warm-start, 100% unpruned weights, and TD-native prompt + 1-ply / two-step expectiminimax lookahead.
 

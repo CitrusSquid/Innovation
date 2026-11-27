@@ -1,6 +1,8 @@
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import {
+  ArrowDown,
   ArrowRight,
+  ArrowUp,
   ChevronDown,
   ChevronLeft,
   ChevronRight,
@@ -26,7 +28,7 @@ import {
 } from '../engine/settings';
 import { sortHandCards, type HandSortMode } from '../engine/tdBenchmark';
 import { normalizeAIBackend } from '../engine/tdWeights';
-import { getSortedSpecialAchievements } from '../engine/uiHelpers';
+import { getSortedSpecialAchievements, groupLogEntries } from '../engine/uiHelpers';
 import type {
   AIDecisionTrace,
   ActionLogEntry,
@@ -83,70 +85,11 @@ const MOBILE_VIEW_MODES: Array<{ value: MobileViewMode; label: string; title: st
   { value: 'large_vertical', label: 'Vertical', title: 'Mobile View: Large Vertical' },
 ];
 
-interface GroupedLogItem {
-  entry: ActionLogEntry;
-  subEntries: ActionLogEntry[];
-}
-
-interface PlayerLogGroup {
-  actorId: string;
-  actorName: string;
-  entries: GroupedLogItem[];
-}
-
-interface TurnLogGroup {
-  turn: number;
-  players: PlayerLogGroup[];
-}
-
-function groupLogEntriesNewestFirst(log: ActionLogEntry[]): TurnLogGroup[] {
-  const byParent = new Map<string, ActionLogEntry[]>();
-  const topLevelEntries: ActionLogEntry[] = [];
-
-  for (const entry of log) {
-    if (entry.parentLogId) {
-      const children = byParent.get(entry.parentLogId) ?? [];
-      children.push(entry);
-      byParent.set(entry.parentLogId, children);
-    } else {
-      topLevelEntries.push(entry);
-    }
-  }
-
-  const byTurn = new Map<number, ActionLogEntry[]>();
-  for (const entry of topLevelEntries) {
-    const list = byTurn.get(entry.turn) ?? [];
-    list.push(entry);
-    byTurn.set(entry.turn, list);
-  }
-
-  // Newest turn at the top; newest action & newest sub-log at the top within each turn
-  const turns = Array.from(byTurn.keys()).sort((a, b) => b - a);
-  return turns.map((turn) => {
-    const entries = [...(byTurn.get(turn) ?? [])].reverse();
-    const playerGroups: PlayerLogGroup[] = [];
-    for (const entry of entries) {
-      const groupedItem: GroupedLogItem = {
-        entry,
-        subEntries: [...(byParent.get(entry.id) ?? [])].reverse(),
-      };
-      const last = playerGroups[playerGroups.length - 1];
-      if (last && last.actorId === entry.actorId) {
-        last.entries.push(groupedItem);
-      } else {
-        playerGroups.push({
-          actorId: entry.actorId,
-          actorName: entry.actorName,
-          entries: [groupedItem],
-        });
-      }
-    }
-    return { turn, players: playerGroups };
-  });
-}
-
-const GroupedChronicle: React.FC<{ log: ActionLogEntry[] }> = ({ log }) => {
-  const groupedTurns = useMemo(() => groupLogEntriesNewestFirst(log), [log]);
+const GroupedChronicle: React.FC<{ log: ActionLogEntry[]; newestFirst: boolean }> = ({
+  log,
+  newestFirst,
+}) => {
+  const groupedTurns = useMemo(() => groupLogEntries(log, newestFirst), [log, newestFirst]);
 
   return (
     <div className="space-y-2">
@@ -351,7 +294,11 @@ export const TabletopView: React.FC<TabletopViewProps> = ({
     onClick: onOpenSettings,
   });
   const [inspectCard, setInspectCard] = useState<CardInstance | null>(null);
-  const [inspectStack, setInspectStack] = useState<ColorStack | null>(null);
+  const [inspectStack, setInspectStack] = useState<{
+    stack: ColorStack;
+    isOwnBoard: boolean;
+  } | null>(null);
+  const [logNewestFirst, setLogNewestFirst] = useState(true);
   const [pileSummary, setPileSummary] = useState<PileSummaryTarget | null>(null);
   const [achievementsWonTarget, setAchievementsWonTarget] =
     useState<AchievementsWonTarget | null>(null);
@@ -372,6 +319,9 @@ export const TabletopView: React.FC<TabletopViewProps> = ({
   const touchStartRef = useRef<{ x: number; y: number; t: number } | null>(null);
   const compactCarouselRef = useRef<HTMLDivElement | null>(null);
   const carouselScrollTimerRef = useRef<number | null>(null);
+  const desktopChronicleScrollRef = useRef<HTMLDivElement | null>(null);
+  const mobileChronicleScrollRef = useRef<HTMLDivElement | null>(null);
+  const prevLogNewestFirstRef = useRef<boolean>(logNewestFirst);
   const handSectionRef = useRef<HTMLElement | null>(null);
   const handScrollRef = useRef<HTMLDivElement | null>(null);
   const handDragRef = useRef<{ active: boolean; startX: number; scrollLeft: number; moved: boolean }>({
@@ -597,6 +547,42 @@ export const TabletopView: React.FC<TabletopViewProps> = ({
       setMobileTab('play');
     }
   }, [isLandscapeLayout, settings.mobileViewMode, mobileTab]);
+
+  useLayoutEffect(() => {
+    const toggledToNewestTop = !prevLogNewestFirstRef.current && logNewestFirst;
+    prevLogNewestFirstRef.current = logNewestFirst;
+
+    const showingChronicle = sidebarTab !== 'ai' || !showAiTab;
+    if (!showingChronicle) return;
+
+    const scrollToEdge = (toBottom: boolean) => {
+      if (isLandscapeLayout) {
+        const el = desktopChronicleScrollRef.current;
+        if (el) el.scrollTop = toBottom ? el.scrollHeight : 0;
+      } else if (isCompactCarousel) {
+        const el = mobileChronicleScrollRef.current;
+        if (el) el.scrollTop = toBottom ? el.scrollHeight : 0;
+      } else if (mobileTab === 'chronicle') {
+        window.scrollTo({
+          top: toBottom ? document.documentElement.scrollHeight : 0,
+        });
+      }
+    };
+
+    if (!logNewestFirst) {
+      scrollToEdge(true);
+    } else if (toggledToNewestTop) {
+      scrollToEdge(false);
+    }
+  }, [
+    logNewestFirst,
+    view.log.length,
+    sidebarTab,
+    showAiTab,
+    isLandscapeLayout,
+    isCompactCarousel,
+    mobileTab,
+  ]);
 
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     if (isLandscapeLayout || isCompactCarousel) return;
@@ -1024,7 +1010,7 @@ export const TabletopView: React.FC<TabletopViewProps> = ({
             </button>
           )}
           <h2 className="font-display text-sm font-bold text-[#F5EFE2] truncate">
-            {sidebarTab === 'ai' ? 'AI Decisions' : 'Chronicles'}
+            {sidebarTab === 'ai' && showAiTab ? 'AI Decisions' : 'Chronicle'}
           </h2>
         </div>
         <div className="flex items-center gap-1.5 shrink-0">
@@ -1045,7 +1031,22 @@ export const TabletopView: React.FC<TabletopViewProps> = ({
               }
               className="min-h-[26px] w-[88px] rounded border border-[#D9C7A3]/20 bg-[#1C1714] px-2 py-0.5 font-mono-num text-[11px] text-[#E5DAC5] hover:border-[#F6C945] cursor-pointer text-center shrink-0"
             >
-              {sidebarTab === 'ai' ? 'Chronicles' : 'AI'}
+              {sidebarTab === 'ai' ? 'Chronicle' : 'AI'}
+            </button>
+          )}
+          {(sidebarTab !== 'ai' || !showAiTab) && (
+            <button
+              type="button"
+              onClick={() => setLogNewestFirst((prev) => !prev)}
+              aria-label={logNewestFirst ? 'Newest on top' : 'Newest on bottom'}
+              title={logNewestFirst ? 'Newest on top' : 'Newest on bottom'}
+              className="h-6 w-6 rounded border border-[#D9C7A3]/20 bg-[#1C1714] text-[#C8B9A6] hover:text-[#F5EFE2] hover:border-[#D9C7A3]/45 inline-flex items-center justify-center cursor-pointer shrink-0"
+            >
+              {logNewestFirst ? (
+                <ArrowDown className="w-3.5 h-3.5" />
+              ) : (
+                <ArrowUp className="w-3.5 h-3.5" />
+              )}
             </button>
           )}
         </div>
@@ -1058,7 +1059,7 @@ export const TabletopView: React.FC<TabletopViewProps> = ({
           )}
         />
       ) : (
-        <GroupedChronicle log={view.log} />
+        <GroupedChronicle log={view.log} newestFirst={logNewestFirst} />
       )}
     </section>
   );
@@ -1453,6 +1454,9 @@ export const TabletopView: React.FC<TabletopViewProps> = ({
                   ? 'h-[25px] min-h-[25px] py-0 leading-none w-full min-w-0 px-1 text-[10.5px] truncate'
                   : 'min-h-[26px] min-w-[66px] py-0.5 px-2 text-[11px]';
 
+                const revealedTag =
+                  isAllAI || view.phase === 'gameover' ? 'Revealed' : 'Debug Revealed';
+
                 const scoreBtn = (
                   <button
                     type="button"
@@ -1460,8 +1464,8 @@ export const TabletopView: React.FC<TabletopViewProps> = ({
                       setPileSummary({
                         title: `${opp.name}'s Score Pile`,
                         subtitle: opp.revealedScoreCards
-                          ? `${opp.scoreCount} cards · ${opp.scoreTotal} points total (${isAllAI ? 'Revealed' : 'Debug Revealed'})`
-                          : `${opp.scoreCount} cards · ${opp.scoreTotal} points total (only Age backs visible)`,
+                          ? `${opp.scoreCount} cards · ${opp.scoreTotal} points total (${revealedTag})`
+                          : `${opp.scoreCount} cards · ${opp.scoreTotal} points total`,
                         backs: opp.revealedScoreCards ? undefined : opp.scoreBacks,
                         cards: opp.revealedScoreCards,
                       })
@@ -1503,8 +1507,8 @@ export const TabletopView: React.FC<TabletopViewProps> = ({
                       setPileSummary({
                         title: `${opp.name}'s Hand`,
                         subtitle: opp.revealedHandCards
-                          ? `${opp.handCount} cards (${isAllAI ? 'Revealed' : 'Debug Revealed'})`
-                          : `${opp.handCount} cards (only Age backs visible)`,
+                          ? `${opp.handCount} cards (${revealedTag})`
+                          : `${opp.handCount} cards`,
                         backs: opp.revealedHandCards ? undefined : opp.handBacks,
                         cards: opp.revealedHandCards,
                       })
@@ -1612,7 +1616,7 @@ export const TabletopView: React.FC<TabletopViewProps> = ({
                             colorBlindMode={settings.colorBlindMode}
                             cardSize={settings.cardSize}
                             highlightBorder={stackHighlighted}
-                            onInspectStack={(st) => setInspectStack(st)}
+                            onInspectStack={(st) => setInspectStack({ stack: st, isOwnBoard: false })}
                           />
                         );
                       })}
@@ -1964,7 +1968,9 @@ export const TabletopView: React.FC<TabletopViewProps> = ({
                                       confirmOverlay={isConfirmingDogma}
                                       colorBlindMode={settings.colorBlindMode}
                                       cardSize={settings.cardSize}
-                                      onInspectStack={(st) => setInspectStack(st)}
+                                      onInspectStack={(st) =>
+                                        setInspectStack({ stack: st, isOwnBoard: true })
+                                      }
                                       onDogmaHoverChange={(hovering) => {
                                         if (actionMode !== 'dogma' || !canActOnTurn) return;
                                         setHoveredDogmaColor((prev) =>
@@ -2393,9 +2399,10 @@ export const TabletopView: React.FC<TabletopViewProps> = ({
           )}
         </div>
 
-        {/* Compact Carousel Pane 2 (Right): Chronicles / AI Log */}
+        {/* Compact Carousel Pane 2 (Right): Chronicle / AI Log */}
         {isCompactCarousel && (
           <div
+            ref={mobileChronicleScrollRef}
             data-testid="carousel-pane-chronicle"
             className="w-full shrink-0 snap-start snap-always h-full overflow-y-auto px-1.5 sm:px-3 py-1 pb-safe"
           >
@@ -2403,7 +2410,7 @@ export const TabletopView: React.FC<TabletopViewProps> = ({
           </div>
         )}
 
-        {/* Landscape Right Command Sidebar: Decks + Achievements + Chronicles */}
+        {/* Landscape Right Command Sidebar: Decks + Achievements + Chronicle */}
         {isLandscapeLayout && (
           <aside
             className={`flex flex-col ${
@@ -2419,21 +2426,41 @@ export const TabletopView: React.FC<TabletopViewProps> = ({
             <section className="flex-1 min-h-[120px] flex flex-col rounded-lg bg-[#221B17]/95 border border-[#D9C7A3]/18 p-2.5">
               <div className="flex items-center justify-between gap-2 pb-1.5 mb-1.5 border-b border-[#D9C7A3]/15 shrink-0">
                 <h2 className="font-display text-xs font-bold uppercase tracking-wider text-[#F5EFE2]">
-                  {sidebarTab === 'ai' ? 'AI Decisions' : 'Chronicles'}
+                  {sidebarTab === 'ai' && showAiTab ? 'AI Decisions' : 'Chronicle'}
                 </h2>
-                {showAiTab && (
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setSidebarTab((prev) => (prev === 'chronicle' ? 'ai' : 'chronicle'))
-                    }
-                    className="min-h-[26px] w-[88px] rounded border border-[#D9C7A3]/20 bg-[#1C1714] px-2 py-0.5 font-mono-num text-[11px] text-[#E5DAC5] hover:border-[#F6C945] cursor-pointer text-center shrink-0"
-                  >
-                    {sidebarTab === 'ai' ? 'Chronicles' : 'AI'}
-                  </button>
-                )}
+                <div className="flex items-center gap-1.5 shrink-0">
+                  {showAiTab && (
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setSidebarTab((prev) => (prev === 'chronicle' ? 'ai' : 'chronicle'))
+                      }
+                      className="min-h-[26px] w-[88px] rounded border border-[#D9C7A3]/20 bg-[#1C1714] px-2 py-0.5 font-mono-num text-[11px] text-[#E5DAC5] hover:border-[#F6C945] cursor-pointer text-center shrink-0"
+                    >
+                      {sidebarTab === 'ai' ? 'Chronicle' : 'AI'}
+                    </button>
+                  )}
+                  {(sidebarTab !== 'ai' || !showAiTab) && (
+                    <button
+                      type="button"
+                      onClick={() => setLogNewestFirst((prev) => !prev)}
+                      aria-label={logNewestFirst ? 'Newest on top' : 'Newest on bottom'}
+                      title={logNewestFirst ? 'Newest on top' : 'Newest on bottom'}
+                      className="h-6 w-6 rounded border border-[#D9C7A3]/20 bg-[#1C1714] text-[#C8B9A6] hover:text-[#F5EFE2] hover:border-[#D9C7A3]/45 inline-flex items-center justify-center cursor-pointer shrink-0"
+                    >
+                      {logNewestFirst ? (
+                        <ArrowDown className="w-3.5 h-3.5" />
+                      ) : (
+                        <ArrowUp className="w-3.5 h-3.5" />
+                      )}
+                    </button>
+                  )}
+                </div>
               </div>
-              <div className="flex-1 min-h-0 overflow-y-auto pr-0.5">
+              <div
+                ref={desktopChronicleScrollRef}
+                className="flex-1 min-h-0 overflow-y-auto pr-0.5"
+              >
                 {sidebarTab === 'ai' && showAiTab ? (
                   <AIDecisionTraceList
                     traces={aiTraces}
@@ -2442,7 +2469,7 @@ export const TabletopView: React.FC<TabletopViewProps> = ({
                     )}
                   />
                 ) : (
-                  <GroupedChronicle log={view.log} />
+                  <GroupedChronicle log={view.log} newestFirst={logNewestFirst} />
                 )}
               </div>
             </section>
@@ -2513,7 +2540,23 @@ export const TabletopView: React.FC<TabletopViewProps> = ({
       {/* Full Card / Stack Inspector Modal */}
       <CardInspectorModal
         card={inspectCard}
-        stack={inspectStack}
+        stack={inspectStack?.stack ?? null}
+        onDogma={
+          inspectStack?.isOwnBoard &&
+          canActOnTurn &&
+          inspectStack.stack.cards.length > 0 &&
+          inspectStack.stack.cards[inspectStack.stack.cards.length - 1].abilities.length > 0
+            ? () => {
+                const targetColor = inspectStack.stack.color;
+                setInspectCard(null);
+                setInspectStack(null);
+                setPendingMobileConfirm(null);
+                setHoveredDogmaColor(null);
+                setActionMode('none');
+                onAction({ type: 'dogma', playerId: view.viewerId, color: targetColor });
+              }
+            : undefined
+        }
         onClose={() => {
           setInspectCard(null);
           setInspectStack(null);

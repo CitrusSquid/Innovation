@@ -25,6 +25,17 @@
     overscroll-behavior-y: contain;
   }
 
+  html.modal-open,
+  body.modal-open {
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+
+  [role="dialog"][aria-modal="true"],
+  [role="dialog"][aria-modal="true"] * {
+    overscroll-behavior: contain;
+  }
+
   * {
     scrollbar-width: none;
     -ms-overflow-style: none;

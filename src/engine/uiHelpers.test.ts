@@ -5,8 +5,13 @@ import { debugTriggerEndGame } from './debug';
 import { applyAction, createGame } from './engine';
 import { cloneGameState } from './keywords';
 import { DEFAULT_SETTINGS } from './settings';
-import type { GameState, PendingPrompt, SpecialAchievementId } from './types';
-import { getSortedSpecialAchievements, getZeroSelectionSkipLabels } from './uiHelpers';
+import type { ActionLogEntry, GameState, PendingPrompt, SpecialAchievementId } from './types';
+import {
+  getSortedSpecialAchievements,
+  getZeroSelectionSkipLabels,
+  groupLogEntries,
+} from './uiHelpers';
+import { sanitizeStandaloneHtml } from '../utils/offlineExport';
 
 function getCardDefById(id: string) {
   const def = BASE_CARD_DATABASE.find((c) => c.id === id);
@@ -301,4 +306,58 @@ test('debugTriggerEndGame handles 2v2 teams cleanly for win and lose', () => {
 
 test('DEFAULT_SETTINGS locks debug tools by default', () => {
   assert.equal(DEFAULT_SETTINGS.debugUnlocked, false);
+});
+
+test('groupLogEntries supports newest-first and oldest-first ordering across turns, entries, and sub-entries', () => {
+  const log: ActionLogEntry[] = [
+    { id: 'l0', turn: 0, actorId: 'system', actorName: 'System', message: 'Setup' },
+    { id: 'l1', turn: 1, actorId: 'p1', actorName: 'Alice', message: 'Dogma Oars' },
+    { id: 'l1a', turn: 1, actorId: 'p2', actorName: 'Bob', message: 'Bob drew', parentLogId: 'l1' },
+    { id: 'l1b', turn: 1, actorId: 'p1', actorName: 'Alice', message: 'Alice drew', parentLogId: 'l1' },
+    { id: 'l2', turn: 1, actorId: 'p1', actorName: 'Alice', message: 'Draw [1]' },
+    { id: 'l3', turn: 2, actorId: 'p2', actorName: 'Bob', message: 'Meld Wheel' },
+  ];
+
+  const newest = groupLogEntries(log, true);
+  assert.deepEqual(
+    newest.map((t) => t.turn),
+    [2, 1, 0]
+  );
+  assert.deepEqual(
+    newest[1].players[0].entries.map((e) => e.entry.id),
+    ['l2', 'l1']
+  );
+  assert.deepEqual(
+    newest[1].players[0].entries[1].subEntries.map((s) => s.id),
+    ['l1b', 'l1a']
+  );
+
+  const oldest = groupLogEntries(log, false);
+  assert.deepEqual(
+    oldest.map((t) => t.turn),
+    [0, 1, 2]
+  );
+  assert.deepEqual(
+    oldest[1].players[0].entries.map((e) => e.entry.id),
+    ['l1', 'l2']
+  );
+  assert.deepEqual(
+    oldest[1].players[0].entries[0].subEntries.map((s) => s.id),
+    ['l1a', 'l1b']
+  );
+});
+
+test('sanitizeStandaloneHtml removes manifest and apple-touch-icon links while keeping inline favicon', () => {
+  const html = [
+    '<!doctype html><html><head>',
+    '<link rel="manifest" href="./manifest.webmanifest" />',
+    '<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />',
+    '<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%3E%3C/svg%3E" />',
+    '</head><body></body></html>',
+  ].join('\n');
+
+  const cleaned = sanitizeStandaloneHtml(html);
+  assert.equal(cleaned.includes('manifest.webmanifest'), false);
+  assert.equal(cleaned.includes('apple-touch-icon'), false);
+  assert.equal(cleaned.includes('data:image/svg+xml'), true);
 });

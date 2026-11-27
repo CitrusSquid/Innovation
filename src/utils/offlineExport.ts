@@ -1,5 +1,12 @@
 export const OFFLINE_HTML_FILENAME = 'innovation-4th-edition-offline.html';
 
+export function sanitizeStandaloneHtml(html: string): string {
+  return html.replace(
+    /<link\b[^>]*\brel=["'](?:manifest|apple-touch-icon)["'][^>]*\/?>\s*/gi,
+    ''
+  );
+}
+
 function triggerBlobDownload(blob: Blob, filename: string): void {
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
@@ -10,6 +17,36 @@ function triggerBlobDownload(blob: Blob, filename: string): void {
   link.click();
   document.body.removeChild(link);
   window.setTimeout(() => URL.revokeObjectURL(url), 1500);
+}
+
+async function deliverHtmlFile(html: string, filename: string): Promise<void> {
+  const cleanHtml = sanitizeStandaloneHtml(html);
+  const blob = new Blob([cleanHtml], { type: 'text/html;charset=utf-8' });
+
+  if (
+    typeof navigator !== 'undefined' &&
+    typeof navigator.share === 'function' &&
+    typeof File === 'function' &&
+    /iPad|iPhone|iPod/i.test(navigator.userAgent || '')
+  ) {
+    try {
+      const file = new File([blob], filename, { type: 'text/html' });
+      if (!navigator.canShare || navigator.canShare({ files: [file] })) {
+        await navigator.share({
+          files: [file],
+          title: 'Innovation 4th Edition (Offline)',
+        });
+        return;
+      }
+    } catch (err) {
+      if (err instanceof DOMException && err.name === 'AbortError') {
+        return;
+      }
+      // Fall through to standard Blob download
+    }
+  }
+
+  triggerBlobDownload(blob, filename);
 }
 
 /**
@@ -25,8 +62,7 @@ export async function downloadOfflineHtml(): Promise<void> {
   ).__INNOVATION_OFFLINE_HTML__;
 
   if (isStandaloneHtml && preMountSnapshot) {
-    const blob = new Blob([preMountSnapshot], { type: 'text/html;charset=utf-8' });
-    triggerBlobDownload(blob, OFFLINE_HTML_FILENAME);
+    await deliverHtmlFile(preMountSnapshot, OFFLINE_HTML_FILENAME);
     return;
   }
 
@@ -36,8 +72,7 @@ export async function downloadOfflineHtml(): Promise<void> {
       throw new Error(`Failed to read bundled HTML (${response.status}).`);
     }
     const html = await response.text();
-    const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
-    triggerBlobDownload(blob, OFFLINE_HTML_FILENAME);
+    await deliverHtmlFile(html, OFFLINE_HTML_FILENAME);
     return;
   }
 
@@ -48,11 +83,14 @@ export async function downloadOfflineHtml(): Promise<void> {
     throw new Error(msg || `Offline HTML build failed (${response.status}).`);
   }
   const html = await response.text();
-  const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
-  triggerBlobDownload(blob, OFFLINE_HTML_FILENAME);
+  await deliverHtmlFile(html, OFFLINE_HTML_FILENAME);
 }
 
-export function downloadTextFile(filename: string, content: string, mimeType = 'application/json;charset=utf-8'): void {
+export function downloadTextFile(
+  filename: string,
+  content: string,
+  mimeType = 'application/json;charset=utf-8'
+): void {
   if (typeof window === 'undefined' || typeof document === 'undefined') return;
   const blob = new Blob([content], { type: mimeType });
   triggerBlobDownload(blob, filename);

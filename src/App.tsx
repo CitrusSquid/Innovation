@@ -648,7 +648,10 @@ export function App() {
   const playerView = useMemo(() => {
     if (!gameState || !viewerId) return null;
     return projectPlayerView(gameState, viewerId, {
-      revealHidden: isAllAI || (settings.debugUnlocked && settings.debugRevealHidden),
+      revealHidden:
+        isAllAI ||
+        gameState.phase === 'gameover' ||
+        (settings.debugUnlocked && settings.debugRevealHidden),
     });
   }, [gameState, viewerId, isAllAI, settings.debugUnlocked, settings.debugRevealHidden]);
 

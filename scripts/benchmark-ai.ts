@@ -64,7 +64,7 @@ function parseAIToken(raw: string): CanonicalAIBackend {
 
 function printHelp() {
   console.log(`
-Innovation 4E CLI AI Benchmark Tool (v1.7)
+Innovation 4E CLI AI Benchmark Tool (v1.8)
 
 Usage:
   npm run bench:ai -- [options]

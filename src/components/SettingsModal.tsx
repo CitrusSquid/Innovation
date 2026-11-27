@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import {
   ArrowLeft,
+  Download,
   FolderOpen,
   Maximize2,
   Minimize2,
@@ -18,6 +19,7 @@ import type {
   ShowOpponentMovesMode,
 } from '../engine/settings';
 import type { Age, GameState } from '../engine/types';
+import { usePwaInstall } from '../hooks/usePwaInstall';
 import { ColorShapeMark } from './IconGlyph';
 import { OfflineExportButton } from './OfflineExportButton';
 
@@ -143,6 +145,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   const [cardSearch, setCardSearch] = useState('');
   const [cardAgeFilter, setCardAgeFilter] = useState<'all' | Age>('all');
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const { canInstall, showIosHint, triggerInstall } = usePwaInstall();
 
   const canUseFullscreen = useMemo(() => isFullscreenSupported(), []);
 
@@ -372,7 +375,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 <h3 className="text-xs font-semibold uppercase tracking-wider text-[#F6C945]">
                   Saves &amp; Offline HTML
                 </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div className={`grid grid-cols-1 ${canInstall ? 'sm:grid-cols-3' : 'sm:grid-cols-2'} gap-2`}>
                   <button
                     type="button"
                     onClick={() => {
@@ -384,10 +387,29 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                     <FolderOpen className="w-4 h-4 text-[#F6C945]" />
                     <span>Saves &amp; Resume</span>
                   </button>
+                  {canInstall && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        void triggerInstall();
+                      }}
+                      className="min-h-[40px] rounded-lg border border-[#C88A1E]/45 bg-[#C88A1E]/15 px-3 py-1.5 text-xs font-medium text-[#F5EFE2] hover:bg-[#C88A1E]/25 inline-flex items-center justify-center gap-1.5 cursor-pointer"
+                    >
+                      <Download className="w-3.5 h-3.5 text-[#F6C945]" />
+                      <span>Install App</span>
+                    </button>
+                  )}
                   <div className="flex items-stretch">
                     <OfflineExportButton className="w-full justify-center" />
                   </div>
                 </div>
+                {canInstall && showIosHint && (
+                  <p className="text-[11px] text-[#E5DAC5] bg-[#1C1714] border border-[#C88A1E]/35 rounded-lg px-3 py-2">
+                    In Safari, tap <strong className="text-[#F6C945]">Share</strong> &rarr;{' '}
+                    <strong className="text-[#F6C945]">Add to Home Screen</strong> to install for
+                    offline play.
+                  </p>
+                )}
               </section>
             )}
 

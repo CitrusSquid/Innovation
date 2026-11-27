@@ -688,9 +688,11 @@ export const PileSummaryModal: React.FC<{
 const SplayedPileVisual: React.FC<{
   stack: ColorStack;
   focusedCardId: string | null;
+  hoveredCardId: string | null;
   onSelectCard: (card: CardInstance) => void;
   onClearFocus: () => void;
-}> = ({ stack, focusedCardId, onSelectCard, onClearFocus }) => {
+  onHoverCard: (cardId: string | null) => void;
+}> = ({ stack, focusedCardId, hoveredCardId, onSelectCard, onClearFocus, onHoverCard }) => {
   const [viewportW, setViewportW] = useState(
     typeof window !== 'undefined' ? window.innerWidth : 1024
   );
@@ -753,6 +755,7 @@ const SplayedPileVisual: React.FC<{
   const stageW = cardW + Math.max(0, ...positions.map((p) => p.x));
   const stageH = cardH + Math.max(0, ...positions.map((p) => p.y));
   const reversedCards = [...cards].reverse();
+  const activeCardId = hoveredCardId ?? focusedCardId;
 
   return (
     <div className="space-y-3">
@@ -769,8 +772,8 @@ const SplayedPileVisual: React.FC<{
             {cards.map((c, idx) => {
               const pos = positions[idx];
               const isTop = idx === n - 1;
-              const isFocused = c.instanceId === focusedCardId;
-              const isDimmed = focusedCardId !== null && !isFocused;
+              const isFocused = c.instanceId === activeCardId;
+              const isDimmed = activeCardId !== null && !isFocused;
 
               return (
                 <button
@@ -778,7 +781,7 @@ const SplayedPileVisual: React.FC<{
                   type="button"
                   onClick={(e) => {
                     e.stopPropagation();
-                    if (focusedCardId !== null) {
+                    if (focusedCardId === c.instanceId) {
                       onClearFocus();
                     } else {
                       onSelectCard(c);
@@ -880,15 +883,18 @@ const SplayedPileVisual: React.FC<{
           >
             {reversedCards.map((c, revIdx) => {
               const isFocused = c.instanceId === focusedCardId;
+              const isHovered = c.instanceId === hoveredCardId;
               const prefix = revIdx === 0 ? 'Top' : `#${revIdx + 1}`;
               return (
                 <button
                   key={c.instanceId}
                   type="button"
                   title={`${prefix}: ${c.name} [${c.age}]`}
+                  onMouseEnter={() => onHoverCard(c.instanceId)}
+                  onMouseLeave={() => onHoverCard(null)}
                   onClick={(e) => {
                     e.stopPropagation();
-                    if (focusedCardId !== null) {
+                    if (focusedCardId === c.instanceId) {
                       onClearFocus();
                     } else {
                       onSelectCard(c);
@@ -897,6 +903,8 @@ const SplayedPileVisual: React.FC<{
                   className={`w-full min-h-[34px] rounded-md border px-2.5 py-1 text-left text-xs cursor-pointer transition-colors truncate ${
                     isFocused
                       ? 'border-[#F6C945] bg-[#3A2D19] text-[#F6C945] font-semibold'
+                      : isHovered
+                      ? 'border-[#F6C945]/75 bg-[#2B2219] text-[#F5EFE2]'
                       : 'border-[#D9C7A3]/20 bg-[#1C1714] text-[#D9C7A3] hover:border-[#F6C945]/60'
                   }`}
                 >
@@ -924,7 +932,7 @@ const SplayedPileVisual: React.FC<{
                 aria-label={`${prefix}: ${c.name}`}
                 onClick={(e) => {
                   e.stopPropagation();
-                  if (focusedCardId !== null) {
+                  if (focusedCardId === c.instanceId) {
                     onClearFocus();
                   } else {
                     onSelectCard(c);
@@ -957,12 +965,15 @@ const STACK_SPLAY_TEXT: Record<ColorStack['splay'], string> = {
 export const CardInspectorModal: React.FC<{
   card?: CardInstance | null;
   stack?: ColorStack | null;
+  onDogma?: () => void;
   onClose: () => void;
-}> = ({ card, stack, onClose }) => {
+}> = ({ card, stack, onDogma, onClose }) => {
   const [focusedCardId, setFocusedCardId] = useState<string | null>(null);
+  const [hoveredCardId, setHoveredCardId] = useState<string | null>(null);
 
   useEffect(() => {
     setFocusedCardId(null);
+    setHoveredCardId(null);
   }, [stack, card]);
 
   useEffect(() => {
@@ -976,12 +987,13 @@ export const CardInspectorModal: React.FC<{
 
   if (!card && !stack) return null;
 
+  const activeCardId = hoveredCardId ?? focusedCardId;
   const stackIcons = stack ? getStackVisibleIcons(stack) : null;
   const examinedCard =
     card ??
     (stack
-      ? (focusedCardId
-          ? stack.cards.find((c) => c.instanceId === focusedCardId)
+      ? (activeCardId
+          ? stack.cards.find((c) => c.instanceId === activeCardId)
           : stack.cards[stack.cards.length - 1]) ?? null
       : null);
 
@@ -1033,8 +1045,10 @@ export const CardInspectorModal: React.FC<{
           <SplayedPileVisual
             stack={stack}
             focusedCardId={focusedCardId}
+            hoveredCardId={hoveredCardId}
             onSelectCard={(clicked) => setFocusedCardId(clicked.instanceId)}
             onClearFocus={() => setFocusedCardId(null)}
+            onHoverCard={setHoveredCardId}
           />
         )}
 
@@ -1051,6 +1065,21 @@ export const CardInspectorModal: React.FC<{
             <div onClick={(e) => e.stopPropagation()} className="cursor-default">
               <CardTile card={card} />
             </div>
+          </div>
+        )}
+
+        {onDogma && (
+          <div className="flex justify-center pt-1" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onDogma();
+              }}
+              className="w-full max-w-[344px] sm:max-w-[368px] min-h-[44px] rounded-lg border border-[#FAE078] bg-[#F6C945] text-[#1C1714] text-sm font-bold shadow-md hover:bg-[#fae078] transition-colors cursor-pointer"
+            >
+              Dogma
+            </button>
           </div>
         )}
 
@@ -1942,7 +1971,7 @@ export const AboutModal: React.FC<{
             </h2>
           </div>
           {subView === 'changelog' && (
-            <span className="font-mono-num text-xs text-[#9E8F7E] shrink-0">v1.7</span>
+            <span className="font-mono-num text-xs text-[#9E8F7E] shrink-0">v1.8</span>
           )}
         </div>
 
@@ -1978,7 +2007,7 @@ export const AboutModal: React.FC<{
                   </button>
                 </div>
                 <div className="text-right">
-                  <span className="font-mono-num text-[11px] text-[#9E8F7E]">v1.7</span>
+                  <span className="font-mono-num text-[11px] text-[#9E8F7E]">v1.8</span>
                 </div>
               </div>
             </>
@@ -2119,6 +2148,21 @@ export const AboutModal: React.FC<{
           {subView === 'changelog' && (
             <div className="rounded-lg border border-[#D9C7A3]/15 bg-[#1C1714] p-3.5 text-xs text-[#D9C7A3] space-y-2.5">
               <div>
+                <div className="font-mono-num font-bold text-[#F5EFE2] mb-0.5">v1.8</div>
+                <p>
+                  Added Progressive Web App (PWA) support with offline Service Worker caching, app
+                  icons, and an in-app Install App option while preserving single-file offline HTML
+                  export; added an up/down arrow toggle in Chronicle to reverse log order
+                  (newest first by default); added a yellow Dogma action button inside the Card
+                  Inspector when inspecting your own active stack; revealed all hands and score
+                  piles when inspecting the board after a match ends; fixed stack inspection so
+                  switching directly between covered cards requires only a single click and hovering
+                  over desktop stack buttons previews that card; locked background scrolling behind
+                  open modals; and removed redundant hidden-back parenthetical text on opponent Hand
+                  and Score Pile summaries.
+                </p>
+              </div>
+              <div className="pt-2 border-t border-[#D9C7A3]/10">
                 <div className="font-mono-num font-bold text-[#F5EFE2] mb-0.5">v1.7</div>
                 <p>
                   Reorganized the About screen into Changelog and AI submenus (moving TD AI
