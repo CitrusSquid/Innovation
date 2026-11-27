@@ -14,7 +14,10 @@ A fan-made digital adaptation of *Innovation* (4th Edition) by Carl Chudyk.
 - **Mobile and desktop**. Has 2 separate layouts, one for mobile (vertical) and one for widescreen desktop / tablet layouts.
 
 ## Quick Start
-- Download and run index.html in Dist folder.
+- Github Pages link: https://citrussquid.github.io/Innovation/
+- May be downloaded as a .html file for local usage
+
+- Alternatively download and run index.html in Dist folder.
 
 ## AI Training & Benchmarking
 
