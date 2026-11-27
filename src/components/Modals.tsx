@@ -1216,8 +1216,9 @@ export const RulesModal: React.FC<{ onClose: () => void }> = ({ onClose }) => (
           <h3 className="font-display font-bold text-[#F6C945]">2v2 Team Rules</h3>
           <p className="mt-1">
             Teammates sit across from each other and share a combined 6-achievement victory target.
-            Teammates share non-demand Dogma effects (granting free draws) and are immune to
-            Demands, while hands and score piles remain hidden.
+            Teammates share non-demand Dogma effects and are immune to Demands, while hands and
+            score piles remain hidden. The sharing bonus (free draw) is only granted when
+            opponents, not allies share in the dogma.
           </p>
         </section>
       </div>
