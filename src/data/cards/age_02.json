@@ -1,0 +1,246 @@
+{
+  "age": 2,
+  "set": "base",
+  "cards": [
+    {
+      "id": "B016",
+      "rawId": "B 016",
+      "age": 2,
+      "name": "CONSTRUCTION",
+      "color": "red",
+      "icons": {
+        "tl": "tower",
+        "bl": "hexagon",
+        "bc": "tower",
+        "br": "tower"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "tower",
+          "isDemand": true,
+          "text": "I DEMAND you transfer two cards from your hand to my hand! Draw a [2]!"
+        },
+        {
+          "index": 2,
+          "icon": "tower",
+          "isDemand": false,
+          "text": "If you are the only player with five top cards, claim the Empire achievement."
+        }
+      ]
+    },
+    {
+      "id": "B017",
+      "rawId": "B 017",
+      "age": 2,
+      "name": "ROAD BUILDING",
+      "color": "red",
+      "icons": {
+        "tl": "tower",
+        "bl": "tower",
+        "bc": "hexagon",
+        "br": "tower"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "tower",
+          "isDemand": false,
+          "text": "Meld one or two cards from your hand. If you meld two, you may transfer your top red card to another player's board. If you do, meld that player's top green card."
+        }
+      ]
+    },
+    {
+      "id": "B018",
+      "rawId": "B 018",
+      "age": 2,
+      "name": "CANAL BUILDING",
+      "color": "yellow",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "coin",
+        "bc": "leaf",
+        "br": "coin"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "coin",
+          "isDemand": false,
+          "text": "You may choose to either exchange all the highest cards in your hand with all the highest cards in your score pile, or junk all cards in the [3] deck."
+        }
+      ]
+    },
+    {
+      "id": "B019",
+      "rawId": "B 019",
+      "age": 2,
+      "name": "FERMENTING",
+      "color": "yellow",
+      "icons": {
+        "tl": "leaf",
+        "bl": "leaf",
+        "bc": "hexagon",
+        "br": "tower"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "leaf",
+          "isDemand": false,
+          "text": "Draw a [2] for every color on your board with leaf."
+        },
+        {
+          "index": 2,
+          "icon": "leaf",
+          "isDemand": false,
+          "text": "You may tuck a green card from your hand. If you don't, junk all cards in the [2] deck, and junk Fermenting if it is a top card on any board."
+        }
+      ]
+    },
+    {
+      "id": "B020",
+      "rawId": "B 020",
+      "age": 2,
+      "name": "CURRENCY",
+      "color": "green",
+      "icons": {
+        "tl": "leaf",
+        "bl": "coin",
+        "bc": "hexagon",
+        "br": "coin"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "coin",
+          "isDemand": false,
+          "text": "You may return any number of cards from your hand. If you do, draw and score a [2] for every different value of card you return."
+        }
+      ]
+    },
+    {
+      "id": "B021",
+      "rawId": "B 021",
+      "age": 2,
+      "name": "MAPMAKING",
+      "color": "green",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "coin",
+        "bc": "coin",
+        "br": "tower"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "coin",
+          "isDemand": true,
+          "text": "I DEMAND you transfer a [1] from your score pile to my score pile!"
+        },
+        {
+          "index": 2,
+          "icon": "coin",
+          "isDemand": false,
+          "text": "If any card was transferred due to the demand, draw and score a [1]."
+        }
+      ]
+    },
+    {
+      "id": "B022",
+      "rawId": "B 022",
+      "age": 2,
+      "name": "CALENDAR",
+      "color": "blue",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "leaf",
+        "bc": "leaf",
+        "br": "lightbulb"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "leaf",
+          "isDemand": false,
+          "text": "If you have more cards in your score pile than in your hand, draw two [3]."
+        }
+      ]
+    },
+    {
+      "id": "B023",
+      "rawId": "B 023",
+      "age": 2,
+      "name": "MATHEMATICS",
+      "color": "blue",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "lightbulb",
+        "bc": "coin",
+        "br": "lightbulb"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "You may return a card from your hand. If you do, draw and meld a card of value one higher than the card you return."
+        }
+      ]
+    },
+    {
+      "id": "B024",
+      "rawId": "B 024",
+      "age": 2,
+      "name": "MONOTHEISM",
+      "color": "purple",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "tower",
+        "bc": "tower",
+        "br": "tower"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "tower",
+          "isDemand": true,
+          "text": "I DEMAND you transfer a top card on your board of a different color from every card on my board to my score pile! If you do, draw and tuck a [1]!"
+        },
+        {
+          "index": 2,
+          "icon": "tower",
+          "isDemand": false,
+          "text": "Draw and tuck a [1]."
+        }
+      ]
+    },
+    {
+      "id": "B025",
+      "rawId": "B 025",
+      "age": 2,
+      "name": "PHILOSOPHY",
+      "color": "purple",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "lightbulb",
+        "bc": "lightbulb",
+        "br": "lightbulb"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "You may splay left any one color of your cards."
+        },
+        {
+          "index": 2,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "You may score a card from your hand."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "age": 4,
+  "set": "base",
+  "cards": [
+    {
+      "id": "B036",
+      "rawId": "B 036",
+      "age": 4,
+      "name": "COLONIALISM",
+      "color": "red",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "factory",
+        "bc": "lightbulb",
+        "br": "factory"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "factory",
+          "isDemand": false,
+          "text": "Draw and tuck a [3]. If it is green, junk all cards in the [5] deck. If it has coin, repeat this effect."
+        }
+      ]
+    },
+    {
+      "id": "B037",
+      "rawId": "B 037",
+      "age": 4,
+      "name": "GUNPOWDER",
+      "color": "red",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "factory",
+        "bc": "coin",
+        "br": "factory"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "factory",
+          "isDemand": true,
+          "text": "I DEMAND you transfer a top card with tower from your board to my score pile!"
+        },
+        {
+          "index": 2,
+          "icon": "factory",
+          "isDemand": false,
+          "text": "If any card was transferred due to the demand, draw and score a [2]."
+        }
+      ]
+    },
+    {
+      "id": "B038",
+      "rawId": "B 038",
+      "age": 4,
+      "name": "ANATOMY",
+      "color": "yellow",
+      "icons": {
+        "tl": "leaf",
+        "bl": "leaf",
+        "bc": "leaf",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "leaf",
+          "isDemand": true,
+          "text": "I DEMAND you return a card from your score pile! If you do, return a top card of equal value from your board! If you do, junk all cards in the [4] deck!"
+        }
+      ]
+    },
+    {
+      "id": "B039",
+      "rawId": "B 039",
+      "age": 4,
+      "name": "PERSPECTIVE",
+      "color": "yellow",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "lightbulb",
+        "bc": "lightbulb",
+        "br": "leaf"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "You may return a card from your hand. If you do, score a card from your hand for every color on your board with lightbulb."
+        }
+      ]
+    },
+    {
+      "id": "B040",
+      "rawId": "B 040",
+      "age": 4,
+      "name": "INVENTION",
+      "color": "green",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "lightbulb",
+        "bc": "lightbulb",
+        "br": "factory"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "You may choose a color you have splayed left and splay it right. If you do, draw and score a [4]."
+        },
+        {
+          "index": 2,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "If you have five colors splayed, claim the Wonder achievement."
+        }
+      ]
+    },
+    {
+      "id": "B041",
+      "rawId": "B 041",
+      "age": 4,
+      "name": "NAVIGATION",
+      "color": "green",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "coin",
+        "bc": "coin",
+        "br": "coin"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "coin",
+          "isDemand": true,
+          "text": "I DEMAND you transfer a [2] or [3] from your score pile to my score pile!"
+        }
+      ]
+    },
+    {
+      "id": "B042",
+      "rawId": "B 042",
+      "age": 4,
+      "name": "EXPERIMENTATION",
+      "color": "blue",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "lightbulb",
+        "bc": "lightbulb",
+        "br": "lightbulb"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "Draw and meld a [5]."
+        }
+      ]
+    },
+    {
+      "id": "B043",
+      "rawId": "B 043",
+      "age": 4,
+      "name": "PRINTING PRESS",
+      "color": "blue",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "lightbulb",
+        "bc": "lightbulb",
+        "br": "coin"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "You may return a card from your score pile. If you do, draw a card of value two higher than the top purple card on your board."
+        },
+        {
+          "index": 2,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "You may splay your blue cards right."
+        }
+      ]
+    },
+    {
+      "id": "B044",
+      "rawId": "B 044",
+      "age": 4,
+      "name": "ENTERPRISE",
+      "color": "purple",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "coin",
+        "bc": "coin",
+        "br": "coin"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "coin",
+          "isDemand": true,
+          "text": "I DEMAND you transfer a top non-purple card with coin from your board to my board! If you do, draw and meld a [4]!"
+        },
+        {
+          "index": 2,
+          "icon": "coin",
+          "isDemand": false,
+          "text": "You may splay your green cards right."
+        }
+      ]
+    },
+    {
+      "id": "B045",
+      "rawId": "B 045",
+      "age": 4,
+      "name": "REFORMATION",
+      "color": "purple",
+      "icons": {
+        "tl": "leaf",
+        "bl": "leaf",
+        "bc": "hexagon",
+        "br": "leaf"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "leaf",
+          "isDemand": false,
+          "text": "You may splay your yellow or purple cards right."
+        },
+        {
+          "index": 2,
+          "icon": "leaf",
+          "isDemand": false,
+          "text": "You may tuck a card from your hand for every splayed color on your board."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,252 @@
+{
+  "age": 7,
+  "set": "base",
+  "cards": [
+    {
+      "id": "B066",
+      "rawId": "B 066",
+      "age": 7,
+      "name": "COMBUSTION",
+      "color": "red",
+      "icons": {
+        "tl": "coin",
+        "bl": "coin",
+        "bc": "factory",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "coin",
+          "isDemand": true,
+          "text": "I DEMAND you transfer one card from your score pile to my score pile for every color with coin on my board!"
+        },
+        {
+          "index": 2,
+          "icon": "coin",
+          "isDemand": false,
+          "text": "Return your bottom red card."
+        }
+      ]
+    },
+    {
+      "id": "B067",
+      "rawId": "B 067",
+      "age": 7,
+      "name": "EXPLOSIVES",
+      "color": "red",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "factory",
+        "bc": "factory",
+        "br": "factory"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "factory",
+          "isDemand": true,
+          "text": "I DEMAND you transfer the three highest cards from your hand to my hand! If you transfer any, and have no cards in hand, draw a [7]!"
+        }
+      ]
+    },
+    {
+      "id": "B068",
+      "rawId": "B 068",
+      "age": 7,
+      "name": "REFRIGERATION",
+      "color": "yellow",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "leaf",
+        "bc": "leaf",
+        "br": "coin"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "leaf",
+          "isDemand": true,
+          "text": "I DEMAND you return all but one of the cards in your hand!"
+        },
+        {
+          "index": 2,
+          "icon": "leaf",
+          "isDemand": false,
+          "text": "You may score a card from your hand."
+        }
+      ]
+    },
+    {
+      "id": "B069",
+      "rawId": "B 069",
+      "age": 7,
+      "name": "SANITATION",
+      "color": "yellow",
+      "icons": {
+        "tl": "leaf",
+        "bl": "leaf",
+        "bc": "hexagon",
+        "br": "leaf"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "leaf",
+          "isDemand": true,
+          "text": "I DEMAND you exchange the two highest cards in your hand with the lowest card in my hand!"
+        },
+        {
+          "index": 2,
+          "icon": "leaf",
+          "isDemand": false,
+          "text": "Choose [7] or [8]. Junk all cards in that deck."
+        }
+      ]
+    },
+    {
+      "id": "B070",
+      "rawId": "B 070",
+      "age": 7,
+      "name": "BICYCLE",
+      "color": "green",
+      "icons": {
+        "tl": "coin",
+        "bl": "coin",
+        "bc": "clock",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "coin",
+          "isDemand": false,
+          "text": "You may exchange all cards in your hand with all cards in your score pile."
+        }
+      ]
+    },
+    {
+      "id": "B071",
+      "rawId": "B 071",
+      "age": 7,
+      "name": "ELECTRICITY",
+      "color": "green",
+      "icons": {
+        "tl": "lightbulb",
+        "bl": "factory",
+        "bc": "hexagon",
+        "br": "factory"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "factory",
+          "isDemand": false,
+          "text": "Return your top card of each color without factory, then draw an [8] for each card you return."
+        }
+      ]
+    },
+    {
+      "id": "B072",
+      "rawId": "B 072",
+      "age": 7,
+      "name": "EVOLUTION",
+      "color": "blue",
+      "icons": {
+        "tl": "lightbulb",
+        "bl": "lightbulb",
+        "bc": "lightbulb",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "You may choose to either draw and score an [8] and then return a card from your score pile, or draw a card of value one higher than the highest card in your score pile."
+        }
+      ]
+    },
+    {
+      "id": "B073",
+      "rawId": "B 073",
+      "age": 7,
+      "name": "PUBLICATIONS",
+      "color": "blue",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "lightbulb",
+        "bc": "clock",
+        "br": "lightbulb"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "You may splay your yellow or blue cards up."
+        },
+        {
+          "index": 2,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "You may junk an available special achievement or make a special achievement in the junk available."
+        }
+      ]
+    },
+    {
+      "id": "B074",
+      "rawId": "B 074",
+      "age": 7,
+      "name": "LIGHTING",
+      "color": "purple",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "leaf",
+        "bc": "clock",
+        "br": "leaf"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "leaf",
+          "isDemand": false,
+          "text": "You may tuck up to three cards from your hand. If you do, draw and score a [7] for every different value of card you tuck."
+        }
+      ]
+    },
+    {
+      "id": "B075",
+      "rawId": "B 075",
+      "age": 7,
+      "name": "RAILROAD",
+      "color": "purple",
+      "icons": {
+        "tl": "clock",
+        "bl": "factory",
+        "bc": "clock",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "clock",
+          "isDemand": false,
+          "text": "Return all cards from your hand."
+        },
+        {
+          "index": 2,
+          "icon": "clock",
+          "isDemand": false,
+          "text": "Draw three [6]."
+        },
+        {
+          "index": 3,
+          "icon": "clock",
+          "isDemand": false,
+          "text": "You may splay up any one color of your cards currently splayed right."
+        }
+      ]
+    }
+  ]
+}

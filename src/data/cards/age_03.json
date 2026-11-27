@@ -1,0 +1,264 @@
+{
+  "age": 3,
+  "set": "base",
+  "cards": [
+    {
+      "id": "B026",
+      "rawId": "B 026",
+      "age": 3,
+      "name": "ENGINEERING",
+      "color": "red",
+      "icons": {
+        "tl": "tower",
+        "bl": "hexagon",
+        "bc": "lightbulb",
+        "br": "tower"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "tower",
+          "isDemand": true,
+          "text": "I DEMAND you transfer a top card with tower of each color from your board to my score pile!"
+        },
+        {
+          "index": 2,
+          "icon": "tower",
+          "isDemand": false,
+          "text": "You may splay your red cards left."
+        }
+      ]
+    },
+    {
+      "id": "B027",
+      "rawId": "B 027",
+      "age": 3,
+      "name": "OPTICS",
+      "color": "red",
+      "icons": {
+        "tl": "coin",
+        "bl": "coin",
+        "bc": "coin",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "coin",
+          "isDemand": false,
+          "text": "Draw and meld a [3]. If it has coin, draw and score a [4]. Otherwise, transfer a card from your score pile to the score pile of an opponent with fewer points than you."
+        }
+      ]
+    },
+    {
+      "id": "B028",
+      "rawId": "B 028",
+      "age": 3,
+      "name": "MACHINERY",
+      "color": "yellow",
+      "icons": {
+        "tl": "leaf",
+        "bl": "leaf",
+        "bc": "hexagon",
+        "br": "tower"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "leaf",
+          "isDemand": true,
+          "text": "I DEMAND you exchange all cards in your hand with all the highest cards in my hand!"
+        },
+        {
+          "index": 2,
+          "icon": "leaf",
+          "isDemand": false,
+          "text": "Score a card from your hand with tower."
+        },
+        {
+          "index": 3,
+          "icon": "leaf",
+          "isDemand": false,
+          "text": "You may splay your red cards left."
+        }
+      ]
+    },
+    {
+      "id": "B029",
+      "rawId": "B 029",
+      "age": 3,
+      "name": "MEDICINE",
+      "color": "yellow",
+      "icons": {
+        "tl": "coin",
+        "bl": "leaf",
+        "bc": "leaf",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "leaf",
+          "isDemand": true,
+          "text": "I DEMAND you exchange the highest card in your score pile with the lowest card in my score pile!"
+        },
+        {
+          "index": 2,
+          "icon": "leaf",
+          "isDemand": false,
+          "text": "Junk an available achievement of value 3 or 4."
+        }
+      ]
+    },
+    {
+      "id": "B030",
+      "rawId": "B 030",
+      "age": 3,
+      "name": "COMPASS",
+      "color": "green",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "coin",
+        "bc": "coin",
+        "br": "leaf"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "coin",
+          "isDemand": true,
+          "text": "I DEMAND you transfer a top non-green card with leaf from your board to my board, and then meld a top card without leaf from my board!"
+        }
+      ]
+    },
+    {
+      "id": "B031",
+      "rawId": "B 031",
+      "age": 3,
+      "name": "PAPER",
+      "color": "green",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "lightbulb",
+        "bc": "lightbulb",
+        "br": "coin"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "You may splay your green or blue cards left."
+        },
+        {
+          "index": 2,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "Score a top card with leaf from your board. If you do, draw a [4] for every color you have splayed left."
+        }
+      ]
+    },
+    {
+      "id": "B032",
+      "rawId": "B 032",
+      "age": 3,
+      "name": "ALCHEMY",
+      "color": "blue",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "leaf",
+        "bc": "tower",
+        "br": "tower"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "tower",
+          "isDemand": false,
+          "text": "Draw and reveal a [4] for every color on your board with tower. If any of the drawn cards are red, return all cards from your hand."
+        },
+        {
+          "index": 2,
+          "icon": "tower",
+          "isDemand": false,
+          "text": "Meld a card from your hand, then score a card from your hand."
+        }
+      ]
+    },
+    {
+      "id": "B033",
+      "rawId": "B 033",
+      "age": 3,
+      "name": "TRANSLATION",
+      "color": "blue",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "coin",
+        "bc": "coin",
+        "br": "coin"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "coin",
+          "isDemand": false,
+          "text": "You may meld all cards in your score pile."
+        },
+        {
+          "index": 2,
+          "icon": "coin",
+          "isDemand": false,
+          "text": "If each top card on your board has coin, claim the World achievement."
+        }
+      ]
+    },
+    {
+      "id": "B034",
+      "rawId": "B 034",
+      "age": 3,
+      "name": "EDUCATION",
+      "color": "purple",
+      "icons": {
+        "tl": "lightbulb",
+        "bl": "lightbulb",
+        "bc": "lightbulb",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "You may return the highest card from your score pile. If you do, draw a card of value two higher than the highest card remaining in your score pile."
+        }
+      ]
+    },
+    {
+      "id": "B035",
+      "rawId": "B 035",
+      "age": 3,
+      "name": "FEUDALISM",
+      "color": "purple",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "tower",
+        "bc": "leaf",
+        "br": "tower"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "tower",
+          "isDemand": true,
+          "text": "I DEMAND you transfer a card with tower from your hand to my hand! If you do, junk all available special achievements!"
+        },
+        {
+          "index": 2,
+          "icon": "tower",
+          "isDemand": false,
+          "text": "You may splay your yellow or purple cards left. If you do, draw a [3]."
+        }
+      ]
+    }
+  ]
+}

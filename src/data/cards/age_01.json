@@ -1,0 +1,357 @@
+{
+  "age": 1,
+  "set": "base",
+  "cards": [
+    {
+      "id": "B001",
+      "rawId": "B 001",
+      "age": 1,
+      "name": "ARCHERY",
+      "color": "red",
+      "icons": {
+        "tl": "tower",
+        "bl": "lightbulb",
+        "bc": "hexagon",
+        "br": "tower"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "tower",
+          "isDemand": true,
+          "text": "I DEMAND you draw a [1], then transfer the highest card in your hand to my hand!"
+        },
+        {
+          "index": 2,
+          "icon": "tower",
+          "isDemand": false,
+          "text": "Junk an available achievement of value 1 or 2."
+        }
+      ]
+    },
+    {
+      "id": "B002",
+      "rawId": "B 002",
+      "age": 1,
+      "name": "METALWORKING",
+      "color": "red",
+      "icons": {
+        "tl": "tower",
+        "bl": "tower",
+        "bc": "hexagon",
+        "br": "tower"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "tower",
+          "isDemand": false,
+          "text": "Draw and reveal a [1]. If it has tower, score it and repeat this effect."
+        }
+      ]
+    },
+    {
+      "id": "B003",
+      "rawId": "B 003",
+      "age": 1,
+      "name": "OARS",
+      "color": "red",
+      "icons": {
+        "tl": "tower",
+        "bl": "coin",
+        "bc": "hexagon",
+        "br": "tower"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "tower",
+          "isDemand": true,
+          "text": "I DEMAND you transfer a card with coin from your hand to my score pile! If you do, draw a [1], and repeat this effect!"
+        },
+        {
+          "index": 2,
+          "icon": "tower",
+          "isDemand": false,
+          "text": "If no cards were transferred due to this demand, draw a [1]."
+        }
+      ]
+    },
+    {
+      "id": "B004",
+      "rawId": "B 004",
+      "age": 1,
+      "name": "AGRICULTURE",
+      "color": "yellow",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "leaf",
+        "bc": "leaf",
+        "br": "leaf"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "leaf",
+          "isDemand": false,
+          "text": "You may return a card from your hand. If you do, draw and score a card of value one higher than the card you return."
+        }
+      ]
+    },
+    {
+      "id": "B005",
+      "rawId": "B 005",
+      "age": 1,
+      "name": "DOMESTICATION",
+      "color": "yellow",
+      "icons": {
+        "tl": "tower",
+        "bl": "coin",
+        "bc": "hexagon",
+        "br": "tower"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "tower",
+          "isDemand": false,
+          "text": "Meld the lowest card in your hand. Draw a [1]."
+        }
+      ]
+    },
+    {
+      "id": "B006",
+      "rawId": "B 006",
+      "age": 1,
+      "name": "MASONRY",
+      "color": "yellow",
+      "icons": {
+        "tl": "tower",
+        "bl": "hexagon",
+        "bc": "tower",
+        "br": "tower"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "tower",
+          "isDemand": false,
+          "text": "You may meld any number of cards from your hand, each with tower."
+        },
+        {
+          "index": 2,
+          "icon": "tower",
+          "isDemand": false,
+          "text": "If you have exactly three red cards on your board, claim the Monument achievement."
+        }
+      ]
+    },
+    {
+      "id": "B007",
+      "rawId": "B 007",
+      "age": 1,
+      "name": "CLOTHING",
+      "color": "green",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "coin",
+        "bc": "leaf",
+        "br": "leaf"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "leaf",
+          "isDemand": false,
+          "text": "Meld a card from your hand of a color not on your board."
+        },
+        {
+          "index": 2,
+          "icon": "leaf",
+          "isDemand": false,
+          "text": "Draw and score a [1] for every color present on your board that no opponent has on their board."
+        }
+      ]
+    },
+    {
+      "id": "B008",
+      "rawId": "B 008",
+      "age": 1,
+      "name": "SAILING",
+      "color": "green",
+      "icons": {
+        "tl": "coin",
+        "bl": "coin",
+        "bc": "hexagon",
+        "br": "leaf"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "coin",
+          "isDemand": false,
+          "text": "Draw and meld a [1]."
+        }
+      ]
+    },
+    {
+      "id": "B009",
+      "rawId": "B 009",
+      "age": 1,
+      "name": "THE WHEEL",
+      "color": "green",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "tower",
+        "bc": "tower",
+        "br": "tower"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "tower",
+          "isDemand": false,
+          "text": "Draw two [1]."
+        }
+      ]
+    },
+    {
+      "id": "B010",
+      "rawId": "B 010",
+      "age": 1,
+      "name": "POTTERY",
+      "color": "blue",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "leaf",
+        "bc": "leaf",
+        "br": "leaf"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "leaf",
+          "isDemand": false,
+          "text": "You may return up to three cards from your hand. If you return any, draw and score a card of value equal to the number of cards you return."
+        },
+        {
+          "index": 2,
+          "icon": "leaf",
+          "isDemand": false,
+          "text": "Draw a [1]."
+        }
+      ]
+    },
+    {
+      "id": "B011",
+      "rawId": "B 011",
+      "age": 1,
+      "name": "TOOLS",
+      "color": "blue",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "lightbulb",
+        "bc": "lightbulb",
+        "br": "tower"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "You may return three cards from your hand. If you do, draw and meld a [3]."
+        },
+        {
+          "index": 2,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "You may return a [3] from your hand. If you do, draw three [1]."
+        }
+      ]
+    },
+    {
+      "id": "B012",
+      "rawId": "B 012",
+      "age": 1,
+      "name": "WRITING",
+      "color": "blue",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "lightbulb",
+        "bc": "lightbulb",
+        "br": "coin"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "Draw a [2]."
+        }
+      ]
+    },
+    {
+      "id": "B013",
+      "rawId": "B 013",
+      "age": 1,
+      "name": "CITY STATES",
+      "color": "purple",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "coin",
+        "bc": "coin",
+        "br": "tower"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "coin",
+          "isDemand": true,
+          "text": "I DEMAND you transfer a top card with tower from your board to my board if you have at least four tower on your board! If you do, draw a [1]!"
+        }
+      ]
+    },
+    {
+      "id": "B014",
+      "rawId": "B 014",
+      "age": 1,
+      "name": "CODE OF LAWS",
+      "color": "purple",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "coin",
+        "bc": "coin",
+        "br": "leaf"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "coin",
+          "isDemand": false,
+          "text": "You may tuck a card from your hand of the same color as any card on your board. If you do, you may splay that color of your cards left."
+        }
+      ]
+    },
+    {
+      "id": "B015",
+      "rawId": "B 015",
+      "age": 1,
+      "name": "MYSTICISM",
+      "color": "purple",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "tower",
+        "bc": "tower",
+        "br": "tower"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "tower",
+          "isDemand": false,
+          "text": "Draw and reveal a [1]. If it is the same color as any card on your board, meld it and draw a [1]."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    color-scheme: only dark;
+    --bg-table: #1c1714;
+    --bg-surface: #27201b;
+    --bg-parchment: #f5efe2;
+    --bg-parchment-deep: #e8dcc4;
+    --ink-primary: #1f1a17;
+    --ink-muted: #5c5045;
+    --accent-gold: #c88a1e;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  html,
+  body {
+    color-scheme: only dark;
+    background-color: var(--bg-table);
+    color: #f5efe2;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior-y: contain;
+  }
+
+  * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  *::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono-num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Subtle archival diamond lattice matching Innovation 4E table craft */
+.bg-archival-table {
+  background-color: #1c1714;
+  background-image:
+    radial-gradient(circle at 50% 25%, rgba(200, 138, 30, 0.08), transparent 62%),
+    linear-gradient(135deg, rgba(245, 239, 226, 0.025) 25%, transparent 25%),
+    linear-gradient(225deg, rgba(245, 239, 226, 0.025) 25%, transparent 25%),
+    linear-gradient(45deg, rgba(245, 239, 226, 0.025) 25%, transparent 25%),
+    linear-gradient(315deg, rgba(245, 239, 226, 0.025) 25%, #1c1714 25%);
+  background-position: 0 0, 24px 0, 24px 0, 0 0, 0 0;
+  background-size: 100% 100%, 48px 48px, 48px 48px, 48px 48px, 48px 48px;
+}
+
+.pb-safe {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+
+.pt-safe {
+  padding-top: max(0.625rem, env(safe-area-inset-top));
+}
+
+.px-safe {
+  padding-left: max(0.875rem, env(safe-area-inset-left));
+  padding-right: max(0.875rem, env(safe-area-inset-right));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

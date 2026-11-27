@@ -1,0 +1,258 @@
+{
+  "age": 6,
+  "set": "base",
+  "cards": [
+    {
+      "id": "B056",
+      "rawId": "B 056",
+      "age": 6,
+      "name": "INDUSTRIALIZATION",
+      "color": "red",
+      "icons": {
+        "tl": "coin",
+        "bl": "factory",
+        "bc": "factory",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "factory",
+          "isDemand": false,
+          "text": "Draw and tuck three [6]. Then, if you are the single player with the most clock, return your top red card."
+        },
+        {
+          "index": 2,
+          "icon": "factory",
+          "isDemand": false,
+          "text": "You may splay your red or purple cards right."
+        }
+      ]
+    },
+    {
+      "id": "B057",
+      "rawId": "B 057",
+      "age": 6,
+      "name": "MACHINE TOOLS",
+      "color": "red",
+      "icons": {
+        "tl": "factory",
+        "bl": "factory",
+        "bc": "hexagon",
+        "br": "factory"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "factory",
+          "isDemand": false,
+          "text": "Draw and score a card of value equal to the highest card in your score pile."
+        }
+      ]
+    },
+    {
+      "id": "B058",
+      "rawId": "B 058",
+      "age": 6,
+      "name": "CANNING",
+      "color": "yellow",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "factory",
+        "bc": "leaf",
+        "br": "factory"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "factory",
+          "isDemand": false,
+          "text": "You may draw and tuck a [6]. If you tuck a card, score a top card without factory of each color on your board."
+        },
+        {
+          "index": 2,
+          "icon": "factory",
+          "isDemand": false,
+          "text": "You may splay your yellow cards right."
+        }
+      ]
+    },
+    {
+      "id": "B059",
+      "rawId": "B 059",
+      "age": 6,
+      "name": "VACCINATION",
+      "color": "yellow",
+      "icons": {
+        "tl": "leaf",
+        "bl": "factory",
+        "bc": "leaf",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "leaf",
+          "isDemand": true,
+          "text": "I DEMAND you choose a card in your score pile! Return all the cards from your score pile of its value! If you do, draw and meld a [6]!"
+        },
+        {
+          "index": 2,
+          "icon": "leaf",
+          "isDemand": false,
+          "text": "If any card was returned as a result of the demand, draw and meld a [7]."
+        }
+      ]
+    },
+    {
+      "id": "B060",
+      "rawId": "B 060",
+      "age": 6,
+      "name": "CLASSIFICATION",
+      "color": "green",
+      "icons": {
+        "tl": "lightbulb",
+        "bl": "lightbulb",
+        "bc": "lightbulb",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "Reveal a card from your hand. Transfer to your hand all cards of that card's color from all opponents' hands. Then, meld all cards of that color from your hand."
+        }
+      ]
+    },
+    {
+      "id": "B061",
+      "rawId": "B 061",
+      "age": 6,
+      "name": "METRIC SYSTEM",
+      "color": "green",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "factory",
+        "bc": "coin",
+        "br": "coin"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "coin",
+          "isDemand": false,
+          "text": "If your green cards are splayed right, you may splay any one color of your cards right."
+        },
+        {
+          "index": 2,
+          "icon": "coin",
+          "isDemand": false,
+          "text": "You may splay your green cards right."
+        }
+      ]
+    },
+    {
+      "id": "B062",
+      "rawId": "B 062",
+      "age": 6,
+      "name": "ATOMIC THEORY",
+      "color": "blue",
+      "icons": {
+        "tl": "lightbulb",
+        "bl": "lightbulb",
+        "bc": "lightbulb",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "You may splay your blue cards right."
+        },
+        {
+          "index": 2,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "Draw and meld a [7]."
+        }
+      ]
+    },
+    {
+      "id": "B063",
+      "rawId": "B 063",
+      "age": 6,
+      "name": "ENCYCLOPEDIA",
+      "color": "blue",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "coin",
+        "bc": "coin",
+        "br": "coin"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "coin",
+          "isDemand": false,
+          "text": "Choose a value. You may meld all the cards of that value in your score pile."
+        },
+        {
+          "index": 2,
+          "icon": "coin",
+          "isDemand": false,
+          "text": "You may junk an available achievement of value 5, 6, or 7."
+        }
+      ]
+    },
+    {
+      "id": "B064",
+      "rawId": "B 064",
+      "age": 6,
+      "name": "DEMOCRACY",
+      "color": "purple",
+      "icons": {
+        "tl": "coin",
+        "bl": "lightbulb",
+        "bc": "lightbulb",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "You may return any number of cards from your hand. If you have returned more cards than any opponent due to Democracy so far during this action, draw and score an [8]."
+        }
+      ]
+    },
+    {
+      "id": "B065",
+      "rawId": "B 065",
+      "age": 6,
+      "name": "EMANCIPATION",
+      "color": "purple",
+      "icons": {
+        "tl": "factory",
+        "bl": "lightbulb",
+        "bc": "factory",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "factory",
+          "isDemand": true,
+          "text": "I DEMAND you transfer a card from your hand to my score pile! If you do, draw a [6]!"
+        },
+        {
+          "index": 2,
+          "icon": "factory",
+          "isDemand": false,
+          "text": "You may splay your red or purple cards right."
+        }
+      ]
+    }
+  ]
+}

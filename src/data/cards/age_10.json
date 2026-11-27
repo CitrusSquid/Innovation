@@ -1,0 +1,270 @@
+{
+  "age": 10,
+  "set": "base",
+  "cards": [
+    {
+      "id": "B096",
+      "rawId": "B 096",
+      "age": 10,
+      "name": "MINIATURIZATION",
+      "color": "red",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "lightbulb",
+        "bc": "clock",
+        "br": "lightbulb"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "Return a card from your hand. If you return a [10], draw a [10] for every different value of card in your score pile. If you return an [11], junk all cards in the [11] deck."
+        }
+      ]
+    },
+    {
+      "id": "B097",
+      "rawId": "B 097",
+      "age": 10,
+      "name": "ROBOTICS",
+      "color": "red",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "factory",
+        "bc": "persona",
+        "br": "factory"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "factory",
+          "isDemand": false,
+          "text": "Score your top green card."
+        },
+        {
+          "index": 2,
+          "icon": "factory",
+          "isDemand": false,
+          "text": "Draw and meld a [10]. If it has factory or clock, self-execute it."
+        }
+      ]
+    },
+    {
+      "id": "B098",
+      "rawId": "B 098",
+      "age": 10,
+      "name": "GLOBALIZATION",
+      "color": "yellow",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "factory",
+        "bc": "factory",
+        "br": "factory"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "factory",
+          "isDemand": true,
+          "text": "I DEMAND you return a top card with leaf from your board!"
+        },
+        {
+          "index": 2,
+          "icon": "factory",
+          "isDemand": false,
+          "text": "Draw and meld an [11]. If no player has more leaf than factory on their board, the single player with the most points wins."
+        }
+      ]
+    },
+    {
+      "id": "B099",
+      "rawId": "B 099",
+      "age": 10,
+      "name": "STEM CELLS",
+      "color": "yellow",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "leaf",
+        "bc": "leaf",
+        "br": "leaf"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "leaf",
+          "isDemand": false,
+          "text": "You may score all cards from your hand."
+        },
+        {
+          "index": 2,
+          "icon": "leaf",
+          "isDemand": false,
+          "text": "Draw an [11]."
+        }
+      ]
+    },
+    {
+      "id": "B100",
+      "rawId": "B 100",
+      "age": 10,
+      "name": "DATABASES",
+      "color": "green",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "clock",
+        "bc": "clock",
+        "br": "clock"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "clock",
+          "isDemand": true,
+          "text": "I DEMAND you return a number of cards from your score pile equal to the value of your highest achievement!"
+        }
+      ]
+    },
+    {
+      "id": "B101",
+      "rawId": "B 101",
+      "age": 10,
+      "name": "SELF SERVICE",
+      "color": "green",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "coin",
+        "bc": "persona",
+        "br": "coin"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "coin",
+          "isDemand": false,
+          "text": "If you have at least twice as many achievements as each opponent, you win."
+        },
+        {
+          "index": 2,
+          "icon": "coin",
+          "isDemand": false,
+          "text": "Self-execute any top card other than Self Service on your board."
+        }
+      ]
+    },
+    {
+      "id": "B102",
+      "rawId": "B 102",
+      "age": 10,
+      "name": "BIOENGINEERING",
+      "color": "blue",
+      "icons": {
+        "tl": "lightbulb",
+        "bl": "clock",
+        "bc": "clock",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "clock",
+          "isDemand": false,
+          "text": "Score a top card with leaf on any opponent's board."
+        },
+        {
+          "index": 2,
+          "icon": "clock",
+          "isDemand": false,
+          "text": "If any player has fewer than two leaf on their board, the single player with the most leaf on their board wins."
+        }
+      ]
+    },
+    {
+      "id": "B103",
+      "rawId": "B 103",
+      "age": 10,
+      "name": "SOFTWARE",
+      "color": "blue",
+      "icons": {
+        "tl": "clock",
+        "bl": "persona",
+        "bc": "clock",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "clock",
+          "isDemand": false,
+          "text": "Draw and score a [10]."
+        },
+        {
+          "index": 2,
+          "icon": "clock",
+          "isDemand": false,
+          "text": "Draw and meld two [9], then self-execute the second card."
+        }
+      ]
+    },
+    {
+      "id": "B104",
+      "rawId": "B 104",
+      "age": 10,
+      "name": "A.I",
+      "color": "purple",
+      "icons": {
+        "tl": "lightbulb",
+        "bl": "lightbulb",
+        "bc": "clock",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "Draw and score a [10]."
+        },
+        {
+          "index": 2,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "If Robotics and Software are top cards on any board, the single player with the lowest score wins."
+        }
+      ]
+    },
+    {
+      "id": "B105",
+      "rawId": "B 105",
+      "age": 10,
+      "name": "THE INTERNET",
+      "color": "purple",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "clock",
+        "bc": "persona",
+        "br": "persona"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "persona",
+          "isDemand": false,
+          "text": "You may splay your green cards up."
+        },
+        {
+          "index": 2,
+          "icon": "persona",
+          "isDemand": false,
+          "text": "Draw and score a [10]."
+        },
+        {
+          "index": 3,
+          "icon": "persona",
+          "isDemand": false,
+          "text": "Draw and meld two [10]."
+        }
+      ]
+    }
+  ]
+}

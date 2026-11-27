@@ -1,0 +1,234 @@
+{
+  "age": 11,
+  "set": "base",
+  "cards": [
+    {
+      "id": "B106",
+      "rawId": "B 106",
+      "age": 11,
+      "name": "ASTROGEOLOGY",
+      "color": "red",
+      "icons": {
+        "tl": "coin",
+        "bl": "hexagon",
+        "bc": "factory",
+        "br": "factory"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "factory",
+          "isDemand": false,
+          "text": "Draw and reveal an [11]. Splay its color on your board aslant. If you do, transfer all but your top four cards of that color into your hand."
+        },
+        {
+          "index": 2,
+          "icon": "factory",
+          "isDemand": false,
+          "text": "If you have at least eight cards in your hand, you win."
+        }
+      ]
+    },
+    {
+      "id": "B107",
+      "rawId": "B 107",
+      "age": 11,
+      "name": "FUSION",
+      "color": "red",
+      "icons": {
+        "tl": "clock",
+        "bl": "clock",
+        "bc": "clock",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "clock",
+          "isDemand": false,
+          "text": "Score a top card of value 11 on your board. If you do, choose a value one or two lower than the scored card, then repeat this dogma effect using the chosen value."
+        }
+      ]
+    },
+    {
+      "id": "B108",
+      "rawId": "B 108",
+      "age": 11,
+      "name": "NEAR-FIELD COMM",
+      "color": "yellow",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "coin",
+        "bc": "persona",
+        "br": "persona"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "persona",
+          "isDemand": true,
+          "text": "I DEMAND you transfer all the cards of the value of my choice from your score pile to my score pile!"
+        },
+        {
+          "index": 2,
+          "icon": "persona",
+          "isDemand": false,
+          "text": "Reveal and self-execute the highest card in your score pile."
+        }
+      ]
+    },
+    {
+      "id": "B109",
+      "rawId": "B 109",
+      "age": 11,
+      "name": "RECLAMATION",
+      "color": "yellow",
+      "icons": {
+        "tl": "coin",
+        "bl": "leaf",
+        "bc": "hexagon",
+        "br": "leaf"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "leaf",
+          "isDemand": false,
+          "text": "Return your three bottom red cards. Draw and meld a card of value equal to half the total sum value of the returned cards, rounded up. If you return three cards, repeat this effect using the color of the melded card."
+        }
+      ]
+    },
+    {
+      "id": "B110",
+      "rawId": "B 110",
+      "age": 11,
+      "name": "HYPERSONICS",
+      "color": "green",
+      "icons": {
+        "tl": "factory",
+        "bl": "factory",
+        "bc": "lightbulb",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "factory",
+          "isDemand": true,
+          "text": "I DEMAND you return exactly two top cards of different colors from your board of the same value! If you do, return all cards of that value or less in your hand and score pile!"
+        }
+      ]
+    },
+    {
+      "id": "B111",
+      "rawId": "B 111",
+      "age": 11,
+      "name": "SPACE TRAFFIC",
+      "color": "green",
+      "icons": {
+        "tl": "coin",
+        "bl": "coin",
+        "bc": "clock",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "coin",
+          "isDemand": false,
+          "text": "Draw and tuck an [11]. If you tuck directly under an [11], you lose. Otherwise, score all but your top five cards of the color of the tucked card, splay that color aslant, and if you do not have the highest score, repeat this effect."
+        }
+      ]
+    },
+    {
+      "id": "B112",
+      "rawId": "B 112",
+      "age": 11,
+      "name": "CLIMATOLOGY",
+      "color": "blue",
+      "icons": {
+        "tl": "leaf",
+        "bl": "hexagon",
+        "bc": "leaf",
+        "br": "leaf"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "leaf",
+          "isDemand": true,
+          "text": "I DEMAND you return two top cards from your board each with the icon of my choice other than leaf!"
+        },
+        {
+          "index": 2,
+          "icon": "leaf",
+          "isDemand": false,
+          "text": "Return a top card on your board. Return all cards in your score pile of equal or higher value than the returned card."
+        }
+      ]
+    },
+    {
+      "id": "B113",
+      "rawId": "B 113",
+      "age": 11,
+      "name": "SOLAR SAILING",
+      "color": "blue",
+      "icons": {
+        "tl": "clock",
+        "bl": "lightbulb",
+        "bc": "lightbulb",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "Draw and meld an [11]. If its color is not splayed aslant on your board, return all but your top four cards of that color, and splay that color aslant. If there are at least six cards of that color on your board, you win."
+        }
+      ]
+    },
+    {
+      "id": "B114",
+      "rawId": "B 114",
+      "age": 11,
+      "name": "ESCAPISM",
+      "color": "purple",
+      "icons": {
+        "tl": "persona",
+        "bl": "hexagon",
+        "bc": "persona",
+        "br": "persona"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "persona",
+          "isDemand": false,
+          "text": "Reveal and junk a card in your hand. Return from your hand all cards of value equal to the value of the junked card. Draw three cards of that value. Self-execute the junked card."
+        }
+      ]
+    },
+    {
+      "id": "B115",
+      "rawId": "B 115",
+      "age": 11,
+      "name": "WHATABOUTISM",
+      "color": "purple",
+      "icons": {
+        "tl": "lightbulb",
+        "bl": "hexagon",
+        "bc": "persona",
+        "br": "lightbulb"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "lightbulb",
+          "isDemand": true,
+          "text": "I DEMAND you transfer a top card with a demand effect of each color from your board to my board! If you transfer any cards, exchange all cards in your score pile with all cards in my score pile!"
+        }
+      ]
+    }
+  ]
+}

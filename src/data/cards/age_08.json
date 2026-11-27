@@ -1,0 +1,246 @@
+{
+  "age": 8,
+  "set": "base",
+  "cards": [
+    {
+      "id": "B076",
+      "rawId": "B 076",
+      "age": 8,
+      "name": "FLIGHT",
+      "color": "red",
+      "icons": {
+        "tl": "coin",
+        "bl": "hexagon",
+        "bc": "clock",
+        "br": "coin"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "coin",
+          "isDemand": false,
+          "text": "If your red cards are splayed up, you may splay any one color of your cards up."
+        },
+        {
+          "index": 2,
+          "icon": "coin",
+          "isDemand": false,
+          "text": "You may splay your red cards up."
+        }
+      ]
+    },
+    {
+      "id": "B077",
+      "rawId": "B 077",
+      "age": 8,
+      "name": "MOBILITY",
+      "color": "red",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "factory",
+        "bc": "clock",
+        "br": "factory"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "factory",
+          "isDemand": true,
+          "text": "I DEMAND you transfer your two highest non-red top cards without factory of different colors to my score pile! If you transfer any cards, draw an [8]!"
+        }
+      ]
+    },
+    {
+      "id": "B078",
+      "rawId": "B 078",
+      "age": 8,
+      "name": "ANTIBIOTICS",
+      "color": "yellow",
+      "icons": {
+        "tl": "leaf",
+        "bl": "leaf",
+        "bc": "leaf",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "leaf",
+          "isDemand": false,
+          "text": "You may return up to three cards from your hand. For every different value of card that you return, draw two [8]."
+        }
+      ]
+    },
+    {
+      "id": "B079",
+      "rawId": "B 079",
+      "age": 8,
+      "name": "SKYSCRAPERS",
+      "color": "yellow",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "factory",
+        "bc": "coin",
+        "br": "coin"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "coin",
+          "isDemand": true,
+          "text": "I DEMAND you transfer a top non-yellow card with clock from your board to mine! If you do, score your top card of that color, then return all cards of that color from your board, and transfer Skyscrapers to my hand if it is a top card!"
+        }
+      ]
+    },
+    {
+      "id": "B080",
+      "rawId": "B 080",
+      "age": 8,
+      "name": "CORPORATIONS",
+      "color": "green",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "factory",
+        "bc": "factory",
+        "br": "coin"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "factory",
+          "isDemand": true,
+          "text": "I DEMAND you transfer a top non-green card with factory from your board to my score pile! If you do, draw and meld an [8]!"
+        },
+        {
+          "index": 2,
+          "icon": "factory",
+          "isDemand": false,
+          "text": "Draw and meld an [8]."
+        }
+      ]
+    },
+    {
+      "id": "B081",
+      "rawId": "B 081",
+      "age": 8,
+      "name": "MASS MEDIA",
+      "color": "green",
+      "icons": {
+        "tl": "lightbulb",
+        "bl": "hexagon",
+        "bc": "clock",
+        "br": "lightbulb"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "You may return a card from your hand. If you do, choose a value, and return all cards of that value from all score piles."
+        },
+        {
+          "index": 2,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "You may splay your purple cards up."
+        }
+      ]
+    },
+    {
+      "id": "B082",
+      "rawId": "B 082",
+      "age": 8,
+      "name": "QUANTUM THEORY",
+      "color": "blue",
+      "icons": {
+        "tl": "clock",
+        "bl": "clock",
+        "bc": "clock",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "clock",
+          "isDemand": false,
+          "text": "You may return up to two cards from your hand. If you return two, draw a [10] and then draw and score a [10]."
+        }
+      ]
+    },
+    {
+      "id": "B083",
+      "rawId": "B 083",
+      "age": 8,
+      "name": "ROCKETRY",
+      "color": "blue",
+      "icons": {
+        "tl": "clock",
+        "bl": "clock",
+        "bc": "clock",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "clock",
+          "isDemand": false,
+          "text": "Return a card in any opponent's score pile for every color on your board with clock."
+        }
+      ]
+    },
+    {
+      "id": "B084",
+      "rawId": "B 084",
+      "age": 8,
+      "name": "EMPIRICISM",
+      "color": "purple",
+      "icons": {
+        "tl": "lightbulb",
+        "bl": "lightbulb",
+        "bc": "lightbulb",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "Choose two colors, then draw and reveal a [9]. If the drawn card is one of those colors, meld it and splay your cards of its color up, otherwise unsplay that color."
+        },
+        {
+          "index": 2,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "If you have at least twenty lightbulb on your board, you win."
+        }
+      ]
+    },
+    {
+      "id": "B085",
+      "rawId": "B 085",
+      "age": 8,
+      "name": "SOCIALISM",
+      "color": "purple",
+      "icons": {
+        "tl": "leaf",
+        "bl": "hexagon",
+        "bc": "leaf",
+        "br": "leaf"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "leaf",
+          "isDemand": false,
+          "text": "You may tuck a top card from your board. If you do, tuck all cards from your hand."
+        },
+        {
+          "index": 2,
+          "icon": "leaf",
+          "isDemand": false,
+          "text": "You may junk an available achievement of value 8, 9, or 10."
+        }
+      ]
+    }
+  ]
+}

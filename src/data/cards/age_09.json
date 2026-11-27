@@ -1,0 +1,264 @@
+{
+  "age": 9,
+  "set": "base",
+  "cards": [
+    {
+      "id": "B086",
+      "rawId": "B 086",
+      "age": 9,
+      "name": "COMPOSITES",
+      "color": "red",
+      "icons": {
+        "tl": "factory",
+        "bl": "factory",
+        "bc": "hexagon",
+        "br": "factory"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "factory",
+          "isDemand": true,
+          "text": "I DEMAND you transfer all but one card from your hand to my hand! Also transfer the highest card from your score pile to my score pile!"
+        }
+      ]
+    },
+    {
+      "id": "B087",
+      "rawId": "B 087",
+      "age": 9,
+      "name": "FISSION",
+      "color": "red",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "clock",
+        "bc": "clock",
+        "br": "clock"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "clock",
+          "isDemand": true,
+          "text": "I DEMAND you draw a [10]! If it is red, junk each player's non-achievement cards, and the Dogma action is complete!"
+        },
+        {
+          "index": 2,
+          "icon": "clock",
+          "isDemand": false,
+          "text": "Return a top card other than Fission from any player's board. Draw a [10]."
+        }
+      ]
+    },
+    {
+      "id": "B088",
+      "rawId": "B 088",
+      "age": 9,
+      "name": "ECOLOGY",
+      "color": "yellow",
+      "icons": {
+        "tl": "leaf",
+        "bl": "lightbulb",
+        "bc": "lightbulb",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "You may return a card from your hand. If you do, score a card from your hand and draw two [10]."
+        },
+        {
+          "index": 2,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "You may junk all cards in the [10] deck."
+        }
+      ]
+    },
+    {
+      "id": "B089",
+      "rawId": "B 089",
+      "age": 9,
+      "name": "SUBURBIA",
+      "color": "yellow",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "coin",
+        "bc": "leaf",
+        "br": "leaf"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "leaf",
+          "isDemand": false,
+          "text": "You may tuck any number of cards from your hand. Draw and score a [1] for each card you tuck."
+        },
+        {
+          "index": 2,
+          "icon": "leaf",
+          "isDemand": false,
+          "text": "You may junk all cards in the [9] deck."
+        }
+      ]
+    },
+    {
+      "id": "B090",
+      "rawId": "B 090",
+      "age": 9,
+      "name": "COLLABORATION",
+      "color": "green",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "coin",
+        "bc": "clock",
+        "br": "coin"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "coin",
+          "isDemand": true,
+          "text": "I DEMAND you draw two [9] and reveal them! Transfer the card of my choice to my board, and meld the other!"
+        },
+        {
+          "index": 2,
+          "icon": "coin",
+          "isDemand": false,
+          "text": "If you have at least ten green cards on your board, you win."
+        }
+      ]
+    },
+    {
+      "id": "B091",
+      "rawId": "B 091",
+      "age": 9,
+      "name": "SATELLITES",
+      "color": "green",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "clock",
+        "bc": "clock",
+        "br": "clock"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "clock",
+          "isDemand": false,
+          "text": "Return all cards from your hand. You may splay your purple cards up."
+        },
+        {
+          "index": 2,
+          "icon": "clock",
+          "isDemand": false,
+          "text": "Draw three [8]."
+        },
+        {
+          "index": 3,
+          "icon": "clock",
+          "isDemand": false,
+          "text": "Meld a card from your hand, then self-execute it."
+        }
+      ]
+    },
+    {
+      "id": "B092",
+      "rawId": "B 092",
+      "age": 9,
+      "name": "COMPUTERS",
+      "color": "blue",
+      "icons": {
+        "tl": "clock",
+        "bl": "hexagon",
+        "bc": "clock",
+        "br": "factory"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "clock",
+          "isDemand": false,
+          "text": "You may splay your red or green cards up."
+        },
+        {
+          "index": 2,
+          "icon": "clock",
+          "isDemand": false,
+          "text": "Draw and meld a [10], then self-execute it."
+        }
+      ]
+    },
+    {
+      "id": "B093",
+      "rawId": "B 093",
+      "age": 9,
+      "name": "GENETICS",
+      "color": "blue",
+      "icons": {
+        "tl": "lightbulb",
+        "bl": "lightbulb",
+        "bc": "lightbulb",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "Draw and meld an [11]. Score all cards beneath it."
+        }
+      ]
+    },
+    {
+      "id": "B094",
+      "rawId": "B 094",
+      "age": 9,
+      "name": "SERVICES",
+      "color": "purple",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "leaf",
+        "bc": "leaf",
+        "br": "leaf"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "leaf",
+          "isDemand": true,
+          "text": "I DEMAND you transfer all the cards of the value of my choice from your score pile to my hand! If you do, transfer a top card without leaf from my board to your hand!"
+        }
+      ]
+    },
+    {
+      "id": "B095",
+      "rawId": "B 095",
+      "age": 9,
+      "name": "SPECIALIZATION",
+      "color": "purple",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "factory",
+        "bc": "leaf",
+        "br": "factory"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "factory",
+          "isDemand": false,
+          "text": "Reveal a card from your hand. Transfer to your hand the top card of that color from all opponents' boards."
+        },
+        {
+          "index": 2,
+          "icon": "factory",
+          "isDemand": false,
+          "text": "You may splay your yellow or blue cards up."
+        }
+      ]
+    }
+  ]
+}

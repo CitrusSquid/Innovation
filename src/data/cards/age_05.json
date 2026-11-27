@@ -1,0 +1,258 @@
+{
+  "age": 5,
+  "set": "base",
+  "cards": [
+    {
+      "id": "B046",
+      "rawId": "B 046",
+      "age": 5,
+      "name": "COAL",
+      "color": "red",
+      "icons": {
+        "tl": "factory",
+        "bl": "factory",
+        "bc": "factory",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "factory",
+          "isDemand": false,
+          "text": "Draw and tuck a [5]."
+        },
+        {
+          "index": 2,
+          "icon": "factory",
+          "isDemand": false,
+          "text": "You may splay your red cards right."
+        },
+        {
+          "index": 3,
+          "icon": "factory",
+          "isDemand": false,
+          "text": "You may choose a color. If you do, score your top card of that color, twice."
+        }
+      ]
+    },
+    {
+      "id": "B047",
+      "rawId": "B 047",
+      "age": 5,
+      "name": "THE PIRATE CODE",
+      "color": "red",
+      "icons": {
+        "tl": "coin",
+        "bl": "factory",
+        "bc": "coin",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "coin",
+          "isDemand": true,
+          "text": "I DEMAND you transfer two cards of value 4 or less from your score pile to my score pile!"
+        },
+        {
+          "index": 2,
+          "icon": "coin",
+          "isDemand": false,
+          "text": "If any cards were transferred due to the demand, score the lowest top card with coin from your board."
+        }
+      ]
+    },
+    {
+      "id": "B048",
+      "rawId": "B 048",
+      "age": 5,
+      "name": "STATISTICS",
+      "color": "yellow",
+      "icons": {
+        "tl": "leaf",
+        "bl": "lightbulb",
+        "bc": "leaf",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "leaf",
+          "isDemand": true,
+          "text": "I DEMAND you transfer all the cards of the value of my choice in your score pile to your hand!"
+        },
+        {
+          "index": 2,
+          "icon": "leaf",
+          "isDemand": false,
+          "text": "You may splay your yellow cards right."
+        }
+      ]
+    },
+    {
+      "id": "B049",
+      "rawId": "B 049",
+      "age": 5,
+      "name": "STEAM ENGINE",
+      "color": "yellow",
+      "icons": {
+        "tl": "hexagon",
+        "bl": "factory",
+        "bc": "coin",
+        "br": "factory"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "factory",
+          "isDemand": false,
+          "text": "Draw and tuck two [4]. Score your bottom yellow card. If it is Steam Engine, junk all cards in the [6] deck."
+        }
+      ]
+    },
+    {
+      "id": "B050",
+      "rawId": "B 050",
+      "age": 5,
+      "name": "BANKING",
+      "color": "green",
+      "icons": {
+        "tl": "factory",
+        "bl": "coin",
+        "bc": "hexagon",
+        "br": "coin"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "coin",
+          "isDemand": true,
+          "text": "I DEMAND you transfer a top non-green card with factory from your board to my board. If you do, draw and score a [5]!"
+        },
+        {
+          "index": 2,
+          "icon": "coin",
+          "isDemand": false,
+          "text": "You may splay your green cards right."
+        }
+      ]
+    },
+    {
+      "id": "B051",
+      "rawId": "B 051",
+      "age": 5,
+      "name": "MEASUREMENT",
+      "color": "green",
+      "icons": {
+        "tl": "lightbulb",
+        "bl": "leaf",
+        "bc": "lightbulb",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "You may reveal and return a card from your hand. If you do, splay your cards of that card’s color right and draw a card of value equal to the number of cards of that color on your board."
+        }
+      ]
+    },
+    {
+      "id": "B052",
+      "rawId": "B 052",
+      "age": 5,
+      "name": "CHEMISTRY",
+      "color": "blue",
+      "icons": {
+        "tl": "factory",
+        "bl": "lightbulb",
+        "bc": "factory",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "factory",
+          "isDemand": false,
+          "text": "You may splay your blue cards right."
+        },
+        {
+          "index": 2,
+          "icon": "factory",
+          "isDemand": false,
+          "text": "Draw and score a card of value one higher than the highest top card on your board and then return a card from your score pile."
+        }
+      ]
+    },
+    {
+      "id": "B053",
+      "rawId": "B 053",
+      "age": 5,
+      "name": "PHYSICS",
+      "color": "blue",
+      "icons": {
+        "tl": "factory",
+        "bl": "lightbulb",
+        "bc": "lightbulb",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "Draw three [6] and reveal them. If at least two of the drawn cards are the same color, return all cards in your hand."
+        }
+      ]
+    },
+    {
+      "id": "B054",
+      "rawId": "B 054",
+      "age": 5,
+      "name": "ASTRONOMY",
+      "color": "purple",
+      "icons": {
+        "tl": "coin",
+        "bl": "lightbulb",
+        "bc": "lightbulb",
+        "br": "hexagon"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "Draw and reveal a [6]. If the card is green or blue, meld it and repeat this effect."
+        },
+        {
+          "index": 2,
+          "icon": "lightbulb",
+          "isDemand": false,
+          "text": "If all non-purple top cards on your board are value 6 or higher, claim the Universe achievement."
+        }
+      ]
+    },
+    {
+      "id": "B055",
+      "rawId": "B 055",
+      "age": 5,
+      "name": "SOCIETIES",
+      "color": "purple",
+      "icons": {
+        "tl": "coin",
+        "bl": "hexagon",
+        "bc": "lightbulb",
+        "br": "coin"
+      },
+      "abilities": [
+        {
+          "index": 1,
+          "icon": "coin",
+          "isDemand": true,
+          "text": "I DEMAND you transfer a top card with lightbulb higher than my top card of the same color from your board to my board! If you do, draw a [5]!"
+        }
+      ]
+    }
+  ]
+}
