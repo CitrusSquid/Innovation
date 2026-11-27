@@ -145,7 +145,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   const [cardSearch, setCardSearch] = useState('');
   const [cardAgeFilter, setCardAgeFilter] = useState<'all' | Age>('all');
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const { canInstall, showIosHint, triggerInstall } = usePwaInstall();
+  const { canInstall, installHint, triggerInstall } = usePwaInstall();
 
   const canUseFullscreen = useMemo(() => isFullscreenSupported(), []);
 
@@ -393,9 +393,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                       onClick={() => {
                         void triggerInstall();
                       }}
-                      className="min-h-[40px] rounded-lg border border-[#C88A1E]/45 bg-[#C88A1E]/15 px-3 py-1.5 text-xs font-medium text-[#F5EFE2] hover:bg-[#C88A1E]/25 inline-flex items-center justify-center gap-1.5 cursor-pointer"
+                      className="min-h-[40px] rounded-lg border border-[#D9C7A3]/25 bg-[#1C1714] px-3 py-1.5 text-sm font-semibold text-[#F5EFE2] hover:border-[#F6C945] inline-flex items-center justify-center gap-2 cursor-pointer"
                     >
-                      <Download className="w-3.5 h-3.5 text-[#F6C945]" />
+                      <Download className="w-4 h-4 text-[#F6C945]" />
                       <span>Install App</span>
                     </button>
                   )}
@@ -403,11 +403,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                     <OfflineExportButton className="w-full justify-center" />
                   </div>
                 </div>
-                {canInstall && showIosHint && (
-                  <p className="text-[11px] text-[#E5DAC5] bg-[#1C1714] border border-[#C88A1E]/35 rounded-lg px-3 py-2">
-                    In Safari, tap <strong className="text-[#F6C945]">Share</strong> &rarr;{' '}
-                    <strong className="text-[#F6C945]">Add to Home Screen</strong> to install for
-                    offline play.
+                {canInstall && installHint && (
+                  <p className="text-[11px] text-[#E5DAC5] bg-[#1C1714] border border-[#D9C7A3]/20 rounded-lg px-3 py-2">
+                    {installHint}
                   </p>
                 )}
               </section>

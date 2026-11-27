@@ -2,6 +2,8 @@ import React, { useMemo, useState } from 'react';
 import {
   ArrowLeft,
   BookOpen,
+  Compass,
+  Download,
   HelpCircle,
   Info,
   Layers,
@@ -22,6 +24,7 @@ import type {
   GameVariant,
 } from '../engine/types';
 import { useLongPress } from '../hooks/useLongPress';
+import { usePwaInstall } from '../hooks/usePwaInstall';
 
 interface TitleScreenProps {
   autoSavedGame: GameState | null;
@@ -32,6 +35,7 @@ interface TitleScreenProps {
   onOpenSettings: () => void;
   onToggleDebugUnlock: () => void;
   onOpenRules: () => void;
+  onOpenUIGuide: () => void;
   onOpenCardBrowser: () => void;
   onOpenAbout: () => void;
 }
@@ -48,6 +52,7 @@ export const TitleScreen: React.FC<TitleScreenProps> = ({
   onOpenSettings,
   onToggleDebugUnlock,
   onOpenRules,
+  onOpenUIGuide,
   onOpenCardBrowser,
   onOpenAbout,
 }) => {
@@ -56,6 +61,7 @@ export const TitleScreen: React.FC<TitleScreenProps> = ({
     onLongPress: onToggleDebugUnlock,
     onClick: onOpenSettings,
   });
+  const { isStandalone, installHint, triggerInstall, dismissHint } = usePwaInstall();
   const [showPlaySetup, setShowPlaySetup] = useState(false);
   const [showDifficultyInfo, setShowDifficultyInfo] = useState(false);
   const [variant, setVariant] = useState<GameVariant>('1v1');
@@ -201,6 +207,15 @@ export const TitleScreen: React.FC<TitleScreenProps> = ({
 
               <button
                 type="button"
+                onClick={onOpenUIGuide}
+                className="min-h-[46px] rounded-xl border border-[#D9C7A3]/25 bg-[#1C1714] px-3 text-sm font-semibold text-[#F5EFE2] hover:border-[#F6C945] inline-flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <Compass className="w-4 h-4 text-[#F6C945]" />
+                <span>UI Guide</span>
+              </button>
+
+              <button
+                type="button"
                 onClick={onOpenCardBrowser}
                 className="min-h-[46px] rounded-xl border border-[#D9C7A3]/25 bg-[#1C1714] px-3 text-sm font-semibold text-[#F5EFE2] hover:border-[#F6C945] inline-flex items-center justify-center gap-2 cursor-pointer"
               >
@@ -225,7 +240,37 @@ export const TitleScreen: React.FC<TitleScreenProps> = ({
                 <Info className="w-4 h-4 text-[#F6C945]" />
                 <span>About</span>
               </button>
+
+              <button
+                type="button"
+                disabled={isStandalone}
+                onClick={() => {
+                  void triggerInstall();
+                }}
+                className={`min-h-[46px] rounded-xl border px-3 text-sm font-semibold inline-flex items-center justify-center gap-2 ${
+                  isStandalone
+                    ? 'border-[#D9C7A3]/15 bg-[#1C1714]/60 text-[#8D7F70] cursor-default'
+                    : 'border-[#D9C7A3]/25 bg-[#1C1714] text-[#F5EFE2] hover:border-[#F6C945] cursor-pointer'
+                }`}
+              >
+                <Download
+                  className={`w-4 h-4 ${isStandalone ? 'text-[#8D7F70]' : 'text-[#F6C945]'}`}
+                />
+                <span>{isStandalone ? 'Installed' : 'Install App'}</span>
+              </button>
             </div>
+            {installHint && (
+              <div className="rounded-xl border border-[#D9C7A3]/20 bg-[#1C1714] px-3 py-2 text-xs text-[#E5DAC5] flex items-start justify-between gap-2">
+                <span className="leading-snug">{installHint}</span>
+                <button
+                  type="button"
+                  onClick={dismissHint}
+                  className="text-[11px] text-[#F6C945] underline shrink-0 cursor-pointer"
+                >
+                  Dismiss
+                </button>
+              </div>
+            )}
           </section>
           <footer className="text-center text-xs text-[#9E8F7E]">
             Innovation is a trademark of Asmadi Games.

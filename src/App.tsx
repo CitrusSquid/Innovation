@@ -34,6 +34,7 @@ import { PrivacyCurtain, VictoryModal } from './components/PrivacyCurtain';
 import { SettingsModal } from './components/SettingsModal';
 import { TabletopView } from './components/TabletopView';
 import { TitleScreen } from './components/TitleScreen';
+import { UIGuideModal } from './components/UIGuideModal';
 
 function collectAchievementNotices(
   prevState: GameState,
@@ -293,6 +294,7 @@ export function App() {
   const [handoffRevealedForKey, setHandoffRevealedForKey] = useState<string>('');
   const [lastHumanViewerId, setLastHumanViewerId] = useState<string | null>(null);
   const [showRulesModal, setShowRulesModal] = useState(false);
+  const [showUIGuideModal, setShowUIGuideModal] = useState(false);
   const [showSaveModal, setShowSaveModal] = useState(false);
   const [showCardBrowser, setShowCardBrowser] = useState(false);
   const [showSettingsModal, setShowSettingsModal] = useState(false);
@@ -696,6 +698,7 @@ export function App() {
           onOpenSettings={() => setShowSettingsModal(true)}
           onToggleDebugUnlock={handleToggleDebugUnlock}
           onOpenRules={() => setShowRulesModal(true)}
+          onOpenUIGuide={() => setShowUIGuideModal(true)}
           onOpenCardBrowser={() => setShowCardBrowser(true)}
           onOpenAbout={() => {
             setAboutInitialSubView('main');
@@ -767,6 +770,8 @@ export function App() {
       )}
 
       {showRulesModal && <RulesModal onClose={() => setShowRulesModal(false)} />}
+
+      {showUIGuideModal && <UIGuideModal onClose={() => setShowUIGuideModal(false)} />}
 
       {showCardBrowser && <CardBrowserModal onClose={() => setShowCardBrowser(false)} />}
 

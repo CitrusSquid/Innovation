@@ -24,69 +24,105 @@ function detectIosSafari(): boolean {
   return /Safari/i.test(ua) && !/CriOS|FxiOS|EdgiOS/i.test(ua);
 }
 
+let sharedDeferredPrompt: BeforeInstallPromptEvent | null = null;
+let sharedIsStandalone = detectStandalone();
+let listenersInitialized = false;
+const subscribers = new Set<() => void>();
+
+function notifySubscribers() {
+  for (const fn of subscribers) {
+    fn();
+  }
+}
+
+function ensureGlobalListeners() {
+  if (listenersInitialized || typeof window === 'undefined') return;
+  listenersInitialized = true;
+
+  window.addEventListener('beforeinstallprompt', (e: Event) => {
+    e.preventDefault();
+    sharedDeferredPrompt = e as BeforeInstallPromptEvent;
+    notifySubscribers();
+  });
+
+  window.addEventListener('appinstalled', () => {
+    sharedDeferredPrompt = null;
+    sharedIsStandalone = true;
+    notifySubscribers();
+  });
+
+  const media = window.matchMedia?.('(display-mode: standalone)');
+  media?.addEventListener?.('change', () => {
+    sharedIsStandalone = detectStandalone();
+    notifySubscribers();
+  });
+}
+
 export function usePwaInstall() {
-  const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
-  const [isStandalone, setIsStandalone] = useState<boolean>(() => detectStandalone());
-  const [showIosHint, setShowIosHint] = useState(false);
+  ensureGlobalListeners();
+
+  const [, setTick] = useState(0);
+  const [installHint, setInstallHint] = useState<string | null>(null);
+
+  useEffect(() => {
+    const sync = () => setTick((t) => t + 1);
+    subscribers.add(sync);
+    return () => {
+      subscribers.delete(sync);
+    };
+  }, []);
 
   const isLocalFile =
     typeof window !== 'undefined' &&
     (window.location.protocol === 'file:' || window.location.protocol === 'content:');
   const isIosSafari = detectIosSafari();
+  const isStandalone = sharedIsStandalone;
+  const hasNativePrompt = sharedDeferredPrompt !== null;
+  const canInstall = !isStandalone && !isLocalFile && (hasNativePrompt || isIosSafari);
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const onBeforeInstallPrompt = (e: Event) => {
-      e.preventDefault();
-      setDeferredPrompt(e as BeforeInstallPromptEvent);
-    };
-
-    const onAppInstalled = () => {
-      setDeferredPrompt(null);
-      setIsStandalone(true);
-      setShowIosHint(false);
-    };
-
-    const media = window.matchMedia?.('(display-mode: standalone)');
-    const onDisplayChange = () => setIsStandalone(detectStandalone());
-
-    window.addEventListener('beforeinstallprompt', onBeforeInstallPrompt);
-    window.addEventListener('appinstalled', onAppInstalled);
-    media?.addEventListener?.('change', onDisplayChange);
-
-    return () => {
-      window.removeEventListener('beforeinstallprompt', onBeforeInstallPrompt);
-      window.removeEventListener('appinstalled', onAppInstalled);
-      media?.removeEventListener?.('change', onDisplayChange);
-    };
+  const dismissHint = useCallback(() => {
+    setInstallHint(null);
   }, []);
 
-  const canInstall =
-    !isStandalone && !isLocalFile && (deferredPrompt !== null || isIosSafari);
-
   const triggerInstall = useCallback(async () => {
-    if (deferredPrompt) {
+    if (sharedDeferredPrompt) {
+      const promptEvent = sharedDeferredPrompt;
       try {
-        await deferredPrompt.prompt();
-        const choice = await deferredPrompt.userChoice;
+        await promptEvent.prompt();
+        const choice = await promptEvent.userChoice;
         if (choice.outcome === 'accepted') {
-          setDeferredPrompt(null);
+          sharedDeferredPrompt = null;
+          setInstallHint(null);
+          notifySubscribers();
         }
       } catch {
         // Ignore prompt dismissal errors
       }
       return;
     }
+
     if (isIosSafari) {
-      setShowIosHint((prev) => !prev);
+      setInstallHint((prev) =>
+        prev ? null : 'In Safari, tap Share → Add to Home Screen to install for offline play.'
+      );
+      return;
     }
-  }, [deferredPrompt, isIosSafari]);
+
+    setInstallHint((prev) =>
+      prev
+        ? null
+        : 'Open the GitHub Pages site in Chrome, Edge, or Safari to install as an app, or use Settings → Save Offline HTML.'
+    );
+  }, [isIosSafari]);
 
   return {
     canInstall,
+    hasNativePrompt,
+    isStandalone,
+    isLocalFile,
     isIosSafari,
-    showIosHint,
+    installHint,
     triggerInstall,
+    dismissHint,
   };
 }
